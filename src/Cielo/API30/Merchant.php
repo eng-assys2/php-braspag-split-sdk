@@ -2,6 +2,9 @@
 
 namespace Cielo\API30;
 
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\ConnectException;
+
 /**
  * Class Merchant
  *
