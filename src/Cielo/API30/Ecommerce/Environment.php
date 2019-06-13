@@ -13,16 +13,22 @@ class Environment implements \Cielo\API30\Environment
 
     private $apiQuery;
 
+    private $braspagAuth;
+
+    private $apiBraspagSplit;
+
     /**
      * Environment constructor.
      *
      * @param $api
      * @param $apiQuery
      */
-    private function __construct($api, $apiQuery)
+    private function __construct($api, $apiQuery, $braspagAuth, $apiBraspagSplit)
     {
         $this->api      = $api;
         $this->apiQuery = $apiQuery;
+        $this->braspagAuth = $braspagAuth;
+        $this->apiBraspagSplit = $apiBraspagSplit;
     }
 
     /**
@@ -32,8 +38,10 @@ class Environment implements \Cielo\API30\Environment
     {
         $api      = 'https://apisandbox.cieloecommerce.cielo.com.br/';
         $apiQuery = 'https://apiquerysandbox.cieloecommerce.cielo.com.br/';
+        $braspagAuth = 'https://authsandbox.braspag.com.br/';
+        $apiBraspagSplit = 'https://splitsandbox.braspag.com.br/';
 
-        return new Environment($api, $apiQuery);
+        return new Environment($api, $apiQuery, $braspagAuth, $apiBraspagSplit);
     }
 
     /**
@@ -43,8 +51,10 @@ class Environment implements \Cielo\API30\Environment
     {
         $api      = 'https://api.cieloecommerce.cielo.com.br/';
         $apiQuery = 'https://apiquery.cieloecommerce.cielo.com.br/';
+        $braspagAuth = ' https://auth.braspag.com.br/';
+        $apiBraspagSplit = 'https://split.braspag.com.br/';
 
-        return new Environment($api, $apiQuery);
+        return new Environment($api, $apiQuery, $braspagAuth, $apiBraspagSplit);
     }
 
     /**
