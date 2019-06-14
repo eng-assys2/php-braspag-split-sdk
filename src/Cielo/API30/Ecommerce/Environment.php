@@ -76,4 +76,22 @@ class Environment implements \Cielo\API30\Environment
     {
         return $this->apiQuery;
     }
+
+    /**
+     * Gets the environment's Braspag Auth URL
+     *
+     * @return string Braspag Auth URL
+     */
+    public function getbraspagAuthURL(){
+        return $this->braspagAuth;
+    }
+
+    /**
+     * Gets the environment's Api Braspag Split URL
+     *
+     * @return string Api Braspag Split URL
+     */
+    public function getapiBraspagSplitURL(){
+        return $this->apiBraspagSplit;
+    }
 }
