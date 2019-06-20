@@ -12,7 +12,11 @@ class Payment implements \JsonSerializable
 
     const PAYMENTTYPE_CREDITCARD = 'CreditCard';
 
+    const PAYMENTTYPE_SPLITEDCREDITCARD = 'SplittedCreditCard';
+
     const PAYMENTTYPE_DEBITCARD = 'DebitCard';
+
+    const PAYMENTTYPE_SPLITEDDEBITCARD = 'SplittedDebitCard';
 
     const PAYMENTTYPE_ELECTRONIC_TRANSFER = 'ElectronicTransfer';
 
