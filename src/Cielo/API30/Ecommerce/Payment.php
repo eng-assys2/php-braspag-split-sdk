@@ -42,6 +42,8 @@ class Payment implements \JsonSerializable
 
     private $recurrentPayment;
 
+    private $splitPayments;
+
     private $creditCard;
 
     private $debitCard;
@@ -149,6 +151,14 @@ class Payment implements \JsonSerializable
         $this->capture          = isset($data->Capture) ? !!$data->Capture : false;
         $this->authenticate     = isset($data->Authenticate) ? !!$data->Authenticate : false;
         $this->recurrent        = isset($data->Recurrent) ? !!$data->Recurrent : false;
+
+        if (isset($data->SplitPayments)) {
+            foreach ($data->SplitPayments as $splitPayment) {
+                $splittedPayment = new SplitPayment();
+                $splittedPayment->populate($splitPayment);    
+                $this->recurrentPayment[] = $splittedPayment;
+            }      
+        }
 
         if (isset($data->RecurrentPayment)) {
             $this->recurrentPayment = new RecurrentPayment(false);
@@ -365,6 +375,38 @@ class Payment implements \JsonSerializable
     public function setAuthenticate($authenticate)
     {
         $this->authenticate = $authenticate;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSplitPayments()
+    {
+        return $this->splitPayments;
+    }
+
+    /**
+     * @param $splitPayment
+     *
+     * @return $this
+     */
+    public function addSplitPayment($splitPayment)
+    {
+        $this->splitPayments[] = $splitPayment;
+
+        return $this;
+    }
+
+    /**
+     * @param $splitPayments
+     *
+     * @return $this
+     */
+    public function setSplitPayments($splitPayments)
+    {
+        $this->splitPayments = $splitPayments;
 
         return $this;
     }
