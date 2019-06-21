@@ -49,9 +49,9 @@ class SplitPayment implements \JsonSerializable
         $this->subordinateMerchantId = isset($data->SubordinateMerchantId) ? !!$data->SubordinateMerchantId : false;
         $this->amount = isset($data->Amount) ? $data->Amount : null;
 
-        if (isset($data->fares)) {
+        if (isset($data->Fares)) {
             $this->fares = new SplitPaymentFares();
-            $this->fares->populate($data->SplitPaymentFares);
+            $this->fares->populate($data->Fares);
         }
     }
 
