@@ -18,9 +18,11 @@ class SplitPayment implements \JsonSerializable
      * SplitPayment constructor.
      *
      */
-    public function __construct($subordinateMerchantId)
+    public function __construct($subordinateMerchantId, $amount = 0, $fares=null)
     {
         $this->subordinateMerchantId = $subordinateMerchantId;
+        $this->amount = $amount;
+        $this->fares = $fares;
     }
 
     /**
@@ -121,6 +123,21 @@ class SplitPayment implements \JsonSerializable
         $this->fares = $fares;
 
         return $this;
+    }
+
+    /**
+     * @param $mbr
+     * @param $fee
+     * 
+     * @return SplitPaymentFares
+     */
+    public function fares($mbr, $fee)
+    {
+        $fares = new SplitPaymentFares($mbr, $fee);
+
+        $this->setFares($fares);
+
+        return $fares;
     }
 
 }

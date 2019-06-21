@@ -14,6 +14,16 @@ class SplitPaymentFares implements \JsonSerializable
     private $fee;
 
     /**
+     * SplitPaymentFares constructor.
+     *
+     */
+    public function __construct($mdr = null, $fee = null)
+    {
+        $this->mdr = $mdr;
+        $this->fee = $fee;
+    }
+
+    /**
      * @param $json
      *
      * @return SplitPaymentFares
