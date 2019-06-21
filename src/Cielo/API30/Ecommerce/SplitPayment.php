@@ -12,16 +12,15 @@ class SplitPayment implements \JsonSerializable
 
     private $subordinateMerchantId;
     private $amount;
-    private $faresMdr;
-    private $faresFee;
+    private $fares;
 
     /**
      * SplitPayment constructor.
      *
      */
-    public function __construct()
+    public function __construct($subordinateMerchantId)
     {
-        
+        $this->subordinateMerchantId = $subordinateMerchantId;
     }
 
     /**
@@ -49,8 +48,11 @@ class SplitPayment implements \JsonSerializable
     {
         $this->subordinateMerchantId = isset($data->SubordinateMerchantId) ? !!$data->SubordinateMerchantId : false;
         $this->amount = isset($data->Amount) ? $data->Amount : null;
-        $this->faresMdr = isset($data->FaresMdr) ? $data->FaresMdr : null;
-        $this->faresFee = isset($data->FaresFee) ? $data->FaresFee : null;
+
+        if (isset($data->fares)) {
+            $this->fares = new SplitPaymentFares();
+            $this->fares->populate($data->SplitPaymentFares);
+        }
     }
 
     /**
@@ -80,17 +82,9 @@ class SplitPayment implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getFaresMdr()
+    public function getFares()
     {
-        return $this->faresMdr;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFaresFee()
-    {
-        return $this->faresFee;
+        return $this->fares;
     }
 
     /**
@@ -118,25 +112,13 @@ class SplitPayment implements \JsonSerializable
     }
 
     /**
-     * @param $faresMdr
+     * @param $fares
      *
      * @return $this
      */
-    public function setFaresMdr($faresMdr)
+    public function setFares($fares)
     {
-        $this->faresMdr = $faresMdr;
-
-        return $this;
-    }
-
-    /**
-     * @param $faresFee
-     *
-     * @return $this
-     */
-    public function setFaresFee($faresFee)
-    {
-        $this->faresFee = $faresFee;
+        $this->fares = $fares;
 
         return $this;
     }
