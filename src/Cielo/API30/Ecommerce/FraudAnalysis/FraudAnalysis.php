@@ -9,36 +9,73 @@ namespace Cielo\API30\Ecommerce\FraudAnalysis;
  */
 class FraudAnalysis implements CieloSerializable
 {
-
+    /** @var string Fixo "cybersource" */
     private $provider;
+
+    /** @var string Tipo de Fluxo para realização da análise de fraude. 
+     * Primeiro Analise (AnalyseFirst) ou 
+     * Primeiro Autorização (AuthorizeFirst) 
+     * */
     private $sequence;
+
+    /** @var string Critério do fluxo. 
+     * OnSuccess - Só realiza a análise se tiver sucesso na transação. 
+     * Always - Sempre realiza a análise 
+     * */
     private $sequenceCriteria;
+
+    /** @var boolean|null 
+     * Quando true, a autorização deve ser com captura automática quando o risco de fraude for considerado baixo (Accept).
+     * Em casos de Reject ou Review, o fluxo permanece o mesmo, ou seja, a captura acontecerá conforme o valor especificado no parâmetro "Capture".
+     * Para a utilização deste parâmetro, a sequência do fluxo de análise de risco deve ser obrigatoriamente "AuthorizeFirst".
+     * */
     private $captureOnLowRisk;
+
+    /** @var boolean|null Quando true, o estorno deve acontecer automaticamente quando o risco de fraude for considerado alto (Reject).
+     * Em casos de Accept ou Review, o fluxo permanece o mesmo, ou seja, o estorno deve ser feito manualmente. 
+     * Para a utilização deste parâmetro, a sequência do fluxo de análise de risco deve ser obrigatoriamente "AuthorizeFirst".
+     * */
     private $voidOnHighRisk;
+
+    /** @var double Valor total do pedido. */
     private $totalOrderAmount;
+
+    /** @var string Identificador utilizado para cruzar informações obtidas pelo Browser do internauta com os dados enviados para análise.
+     * Este mesmo valor deve ser passado na variável SESSIONID do script do DeviceFingerPrint
+     * */
     private $fingerPrintId;
+
+    /** @var FraudAnalysisBrowser */
     private $browser;
+
+    /** @var FraudAnalysisCart */
     private $cart;
+
+    /** @var FraudAnalysisMerchantDefinedFields */
     private $merchantDefinedFields;
+
+    /** @var FraudAnalysisShipping */
     private $shipping;
+
+    /** @var FraudAnalysisTravel */
     private $travel;
     
     /**
      * FraudAnalysis constructor.
      *
      */
-    public function __construct($provider,
-                                $sequence,
-                                $sequenceCriteria,
-                                $captureOnLowRisk,
-                                $voidOnHighRisk,
-                                $totalOrderAmount,
-                                $fingerPrintId,
-                                $browser,
-                                $cart,
-                                $merchantDefinedFields,
-                                $shipping,
-                                $travel)
+    public function __construct($provider="cybersource",
+                                $sequence="AuthorizeFirst", // AnalyseFirst, AuthorizeFirst
+                                $sequenceCriteria="OnSuccess", // OnSuccess, Always
+                                $captureOnLowRisk=false,
+                                $voidOnHighRisk=false,
+                                $totalOrderAmount=0,
+                                $fingerPrintId='',
+                                $browser=null,
+                                $cart=null,
+                                $merchantDefinedFields=null,
+                                $shipping=null,
+                                $travel=null)
     {
         $this->provider=$provider;
         $this->sequence=$sequence;
