@@ -13,7 +13,7 @@ class FraudAnalysisCart implements CieloSerializable
     private $isGift;
     /** @var boolean|null 	Booleano que define se devoluções são aceitas para o pedido. */
     private $returnsAccepted;
-    /** @var FraudAnalysisItems */
+    /** @var FraudAnalysisItem */
     private $items;
 
     /**
@@ -93,6 +93,22 @@ class FraudAnalysisCart implements CieloSerializable
     public function getItems()
     {
         return $this->items;
+    }
+
+    /**
+     * @param $name
+     * @param $quantity
+     * @param $sku
+     * @param $unitPrice
+     *
+     * @return FraudAnalysisItem
+     */
+    public function addItem($name, $quantity, $sku, $unitPrice)
+    {
+        $item = new FraudAnalysisItem($name, $quantity, $sku, $unitPrice);
+        $this->items[] = $item;
+
+        return $item;
     }
 
     /**

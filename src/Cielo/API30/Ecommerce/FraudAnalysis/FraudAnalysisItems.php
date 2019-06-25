@@ -3,11 +3,11 @@
 namespace Cielo\API30\Ecommerce\FraudAnalysis;
 
 /**
- * Class FraudAnalysisItems
+ * Class FraudAnalysisItem
  *
  * @package Cielo\API30\Ecommerce\FraudAnalysis
  */
-class FraudAnalysisItems implements CieloSerializable
+class FraudAnalysisItem implements CieloSerializable
 {
 
     /** @var string|null Campo que avaliará os endereços de cobrança e entrega para diferentes cidades, estados ou países.
@@ -104,7 +104,7 @@ class FraudAnalysisItems implements CieloSerializable
 
 
     /**
-     * FraudAnalysisItems constructor.
+     * FraudAnalysisItem constructor.
      *
      */
     public function __construct($name,
