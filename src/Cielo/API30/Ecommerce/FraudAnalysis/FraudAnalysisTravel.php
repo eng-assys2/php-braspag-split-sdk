@@ -9,16 +9,18 @@ namespace Cielo\API30\Ecommerce\FraudAnalysis;
  */
 class FraudAnalysisTravel implements CieloSerializable
 {
-
+    /** @var string Tipo de viagem. */
     private $journeyType;
+    /** @var datetime|null Data, hora e minuto de partida do vôo. Ex: “2018-01-09 18:00:00” */
     private $departureTime;
+    /** @var FraudAnalysisPassenger */
     private $passengers;
 
     /**
      * FraudAnalysisTravel constructor.
      *
      */
-    public function __construct($journeyType, $departureTime, $passengers)
+    public function __construct($journeyType, $passengers, $departureTime=null)
     {
         $this->journeyType = $journeyType;
         $this->departureTime = $departureTime;
