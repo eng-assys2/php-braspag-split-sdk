@@ -9,15 +9,20 @@ namespace Cielo\API30\Ecommerce\FraudAnalysis;
  */
 class FraudAnalysisCart implements CieloSerializable
 {
+    /** @var boolean|null Booleano que indica se o pedido é para presente ou não. */
     private $isGift;
+    /** @var boolean|null 	Booleano que define se devoluções são aceitas para o pedido. */
     private $returnsAccepted;
+    /** @var FraudAnalysisItems */
     private $items;
 
     /**
      * FraudAnalysisCart constructor.
      *
      */
-    public function __construct($isGift, $returnsAccepted, $items)
+    public function __construct($items,
+                                $isGift=false,
+                                $returnsAccepted=false)
     {
         $this->isGift = $isGift;
         $this->returnsAccepted = $returnsAccepted;
