@@ -20,7 +20,7 @@ class FraudAnalysisTravelLegs implements CieloSerializable
      * FraudAnalysisTravelLegs constructor.
      *
      */
-    public function __construct($origin, $destination)
+    public function __construct($origin=null, $destination=null)
     {
         $this->origin = $origin;
         $this->destination = $destination;
