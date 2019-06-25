@@ -9,8 +9,9 @@ namespace Cielo\API30\Ecommerce\FraudAnalysis;
  */
 class FraudAnalysisMerchantDefinedFields implements CieloSerializable
 {
-
+    /** @var string Id das informações adicionais a serem enviadas. */
     private $id;
+    /** @var string Valor das informações adicionais a serem enviadas. */
     private $value;
 
     /**
