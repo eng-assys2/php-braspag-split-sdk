@@ -9,8 +9,9 @@ namespace Cielo\API30\Ecommerce\FraudAnalysis;
  */
 class FraudAnalysisTravelLegs implements CieloSerializable
 {
-
+    /** @var string Código do aeroporto do ponto de origem da viagem. */
     private $origin;
+    /** @var string Código do aeroporto do ponto de destino da viagem. */
     private $destination;
 
     /**
