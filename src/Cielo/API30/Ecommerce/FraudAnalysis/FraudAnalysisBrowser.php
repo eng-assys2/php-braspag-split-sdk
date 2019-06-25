@@ -11,14 +11,21 @@ class FraudAnalysisBrowser implements CieloSerializable
 {
     /** @var boolean Booleano para identificar se o browser do cliente aceita cookies. */
     private $cookiesAccepted;
+
     /** @var string|null E-mail registrado no browser do comprador. */
     private $email;
+
     /** @var string|null Nome do host onde o comprador estava antes de entrar no site da loja. */
     private $hostName;
+
     /** @var string Endereço IP do comprador. É altamente recomendável o envio deste campo. */
     private $ipAddress;
+
     /** @var string|null Nome do browser utilizado pelo comprador. */
     private $type;
+
+    /** @var string|null */
+    private $browserFingerprint;
 
     /**
      * FraudAnalysisBrowser constructor.
@@ -28,13 +35,15 @@ class FraudAnalysisBrowser implements CieloSerializable
                                 $cookiesAccepted = true,
                                 $email=null,
                                 $hostName=null,
-                                $type=null)
+                                $type=null,
+                                $browserFingerprint=null)
     {
         $this->cookiesAccepted = $cookiesAccepted;
         $this->email = $email;
         $this->hostName = $hostName;
         $this->ipAddress = $ipAddress;
         $this->type = $type;
+        $this->browserFingerprint = $browserFingerprint;
     }
 
     /**
@@ -153,6 +162,26 @@ class FraudAnalysisBrowser implements CieloSerializable
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBrowserFingerprint()
+    {
+        return $this->browserFingerprint;
+    }
+
+    /**
+     * @param $browserFingerprint
+     *
+     * @return $this
+     */
+    public function setBrowserFingerprint($browserFingerprint)
+    {
+        $this->browserFingerprint = $browserFingerprint;
 
         return $this;
     }
