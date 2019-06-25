@@ -9,26 +9,49 @@ namespace Cielo\API30\Ecommerce\FraudAnalysis;
  */
 class FraudAnalysisPassenger implements CieloSerializable
 { 
-
+    /** @var string|null Email do Passageiro. */
     private $email;
+
+    /** @var string|null Id do passageiro a quem o bilheite foi emitido. */
     private $identity;
+
+    /** @var string|null Nome do passageiro. */
     private $name;
+
+    /** @var string|null Classificação do Passageiro. Valores do Campo:
+     * “Adult” (Passageiro adulto)
+     * “Child”(Passageiro criança)
+     * “Infant”(Passageiro infantil)
+     * “Youth”(Passageiro adolescente)
+     * “Student”(Passageiro estudante)
+     * “SeniorCitizen“(Passageiro idoso)
+     * “Military“(Passageiro militar) 
+     * */
     private $rating;
+    
+    /** @var string|null Número do telefone do passageiro. 
+     * Para pedidos fora do U.S., a CyberSource recomenda que inclua o código do país.
+     * 552133665599 (Ex. Código do Pais 55, Código da Cidade 21, Telefone 33665599).
+     * */
     private $phone;
+
+    /** @var string|null Classificação da empresa aérea. Pode-se usar valores como Gold ou Platina. */
     private $status;
+
+    /** @var FraudAnalysisTravelLegs|null */
     private $travelLegs;
 
     /**
      * FraudAnalysisPassenger constructor.
      *
      */
-    public function __construct($email,
-                                $identity,
-                                $name,
-                                $rating,
-                                $phone,
-                                $status,
-                                $travelLegs)
+    public function __construct($email=null,
+                                $identity=null,
+                                $name=null,
+                                $rating=null,
+                                $phone=null,
+                                $status=null,
+                                $travelLegs=null)
     {
         $this->email = $email;
         $this->identity = $identity;
