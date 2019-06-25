@@ -11,8 +11,17 @@ class FraudAnalysisMerchantDefinedFields implements CieloSerializable
 {
 
     private $id;
-
     private $value;
+
+    /**
+     * FraudAnalysisMerchantDefinedFields constructor.
+     *
+     */
+    public function __construct($id, $value)
+    {
+        $this->id = $id;
+        $this->value = $value;
+    }
 
     /**
      * @return array

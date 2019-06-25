@@ -17,7 +17,27 @@ class FraudAnalysisPassenger implements CieloSerializable
     private $phone;
     private $status;
     private $travelLegs;
-    
+
+    /**
+     * FraudAnalysisPassenger constructor.
+     *
+     */
+    public function __construct($email,
+                                $identity,
+                                $name,
+                                $rating,
+                                $phone,
+                                $status,
+                                $travelLegs)
+    {
+        $this->email = $email;
+        $this->identity = $identity;
+        $this->name = $name;
+        $this->rating = $rating;
+        $this->phone = $phone;
+        $this->status = $status;
+        $this->travelLegs = $travelLegs;
+    }
 
     /**
      * @return array

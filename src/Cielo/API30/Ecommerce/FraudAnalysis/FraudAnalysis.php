@@ -23,6 +23,36 @@ class FraudAnalysis implements CieloSerializable
     private $shipping;
     private $travel;
     
+    /**
+     * FraudAnalysis constructor.
+     *
+     */
+    public function __construct($provider,
+                                $sequence,
+                                $sequenceCriteria,
+                                $captureOnLowRisk,
+                                $voidOnHighRisk,
+                                $totalOrderAmount,
+                                $fingerPrintId,
+                                $browser,
+                                $cart,
+                                $merchantDefinedFields,
+                                $shipping,
+                                $travel)
+    {
+        $this->provider=$provider;
+        $this->sequence=$sequence;
+        $this->sequenceCriteria=$sequenceCriteria;
+        $this->captureOnLowRisk=$captureOnLowRisk;
+        $this->voidOnHighRisk=$voidOnHighRisk;
+        $this->totalOrderAmount=$totalOrderAmount;
+        $this->fingerPrintId=$fingerPrintId;
+        $this->browser=$browser;
+        $this->cart=$cart;
+        $this->merchantDefinedFields=$merchantDefinedFields;
+        $this->shipping=$shipping;
+        $this->travel=$travel;
+    }
 
     /**
      * @return array

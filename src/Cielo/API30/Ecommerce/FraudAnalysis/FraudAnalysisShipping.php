@@ -15,6 +15,17 @@ class FraudAnalysisShipping implements CieloSerializable
     private $phone;
 
     /**
+     * FraudAnalysisShipping constructor.
+     *
+     */
+    public function __construct($addressee, $method, $phone)
+    {
+        $this->addressee = $addressee;
+        $this->method = $method;
+        $this->phone = $phone;
+    }
+
+    /**
      * @return array
      */
     public function jsonSerialize()

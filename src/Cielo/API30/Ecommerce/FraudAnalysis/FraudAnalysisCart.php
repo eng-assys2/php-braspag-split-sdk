@@ -14,6 +14,17 @@ class FraudAnalysisCart implements CieloSerializable
     private $items;
 
     /**
+     * FraudAnalysisCart constructor.
+     *
+     */
+    public function __construct($isGift, $returnsAccepted, $items)
+    {
+        $this->isGift = $isGift;
+        $this->returnsAccepted = $returnsAccepted;
+        $this->items = $items;
+    }
+
+    /**
      * @return array
      */
     public function jsonSerialize()

@@ -3,6 +3,7 @@
 namespace Cielo\API30\Ecommerce;
 
 use Cielo\API30\Ecommerce\SplitPayment\SplitPayment;
+use Cielo\API30\Ecommerce\FraudAnalysis\FraudAnalysis;
 
 /**
  * Class Payment
@@ -116,6 +117,8 @@ class Payment implements \JsonSerializable
 
     private $instructions;
 
+    private $fraudAnalysis;
+
     /**
      * Payment constructor.
      *
@@ -175,6 +178,11 @@ class Payment implements \JsonSerializable
         if (isset($data->DebitCard)) {
             $this->debitCard = new CreditCard();
             $this->debitCard->populate($data->DebitCard);
+        }
+
+        if (isset($data->FraudAnalysis)) {
+            $this->fraudAnalysis = new FraudAnalysis();
+            $this->fraudAnalysis->populate($data->FraudAnalysis);
         }
 
         $this->expirationDate = isset($data->ExpirationDate) ? $data->ExpirationDate : null;
@@ -409,39 +417,6 @@ class Payment implements \JsonSerializable
     public function setAuthenticate($authenticate)
     {
         $this->authenticate = $authenticate;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSplitPayments()
-    {
-        return $this->splitPayments;
-    }
-
-    /**
-     * @param $subordinateMerchantId
-     *
-     * @return SplitPayment
-     */
-    public function addSplitPayment($subordinateMerchantId)
-    {
-        $splitPayment = new SplitPayment($subordinateMerchantId);
-        $this->splitPayments[] = $splitPayment;
-
-        return $splitPayment;
-    }
-
-    /**
-     * @param $splitPayments
-     *
-     * @return $this
-     */
-    public function setSplitPayments($splitPayments)
-    {
-        $this->splitPayments = $splitPayments;
 
         return $this;
     }
@@ -1182,6 +1157,59 @@ class Payment implements \JsonSerializable
     public function setInstructions($instructions)
     {
         $this->instructions = $instructions;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSplitPayments()
+    {
+        return $this->splitPayments;
+    }
+
+    /**
+     * @param $subordinateMerchantId
+     *
+     * @return SplitPayment
+     */
+    public function addSplitPayment($subordinateMerchantId)
+    {
+        $splitPayment = new SplitPayment($subordinateMerchantId);
+        $this->splitPayments[] = $splitPayment;
+
+        return $splitPayment;
+    }
+
+    /**
+     * @param $splitPayments
+     *
+     * @return $this
+     */
+    public function setSplitPayments($splitPayments)
+    {
+        $this->splitPayments = $splitPayments;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFraudAnalysis()
+    {
+        return $this->fraudAnalysis;
+    }
+
+    /**
+     * @param $fraudAnalysis
+     *
+     * @return $this
+     */
+    public function setFraudAnalysis($fraudAnalysis)
+    {
+        $this->fraudAnalysis = $fraudAnalysis;
 
         return $this;
     }

@@ -15,6 +15,17 @@ class FraudAnalysisTravel implements CieloSerializable
     private $passengers;
 
     /**
+     * FraudAnalysisTravel constructor.
+     *
+     */
+    public function __construct($journeyType, $departureTime, $passengers)
+    {
+        $this->journeyType = $journeyType;
+        $this->departureTime = $departureTime;
+        $this->passengers = $passengers;
+    }
+
+    /**
      * @return array
      */
     public function jsonSerialize()

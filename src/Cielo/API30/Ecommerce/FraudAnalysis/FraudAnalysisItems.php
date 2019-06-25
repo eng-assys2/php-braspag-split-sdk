@@ -26,6 +26,41 @@ class FraudAnalysisItems implements CieloSerializable
     private $passenger;
 
     /**
+     * FraudAnalysisItems constructor.
+     *
+     */
+    public function __construct($giftCategory,
+                                $hostHedge,
+                                $nonSensicalHedge,
+                                $obscenitiesHedge,
+                                $phoneHedge,
+                                $name,
+                                $quantity,
+                                $sku,
+                                $unitPrice,
+                                $risk,
+                                $timeHedge,
+                                $type,
+                                $velocityHedge,
+                                $passenger)
+    {
+        $this->giftCategory = $giftCategory;
+        $this->hostHedge = $hostHedge;
+        $this->nonSensicalHedge = $nonSensicalHedge;
+        $this->obscenitiesHedge = $obscenitiesHedge;
+        $this->phoneHedge = $phoneHedge;
+        $this->name = $name;
+        $this->quantity = $quantity;
+        $this->sku = $sku;
+        $this->unitPrice = $unitPrice;
+        $this->risk = $risk;
+        $this->timeHedge = $timeHedge;
+        $this->type = $type;
+        $this->velocityHedge = $velocityHedge;
+        $this->passenger = $passenger;
+    }
+
+    /**
      * @return array
      */
     public function jsonSerialize()
