@@ -125,8 +125,11 @@ class FraudAnalysis implements CieloSerializable
         }
 
         if (isset($data->MerchantDefinedFields)) {
-            $this->merchantDefinedFields = new FraudAnalysisMerchantDefinedFields();
-            $this->merchantDefinedFields->populate($data->MerchantDefinedFields);
+            foreach ($data->MerchantDefinedFields as $merchantDefinedField) {
+                $merchant = new FraudAnalysisMerchantDefinedFields();
+                $merchant->populate($merchantDefinedField);    
+                $this->merchantDefinedFields[] = $merchant;
+            }      
         }
 
         if (isset($data->Shipping)) {
