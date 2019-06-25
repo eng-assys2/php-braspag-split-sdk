@@ -22,7 +22,7 @@ class FraudAnalysisCart implements CieloSerializable
      * FraudAnalysisCart constructor.
      *
      */
-    public function __construct($items,
+    public function __construct($items=null,
                                 $isGift=false,
                                 $returnsAccepted=false)
     {
@@ -46,7 +46,14 @@ class FraudAnalysisCart implements CieloSerializable
     {
         $this->isGift = isset($data->IsGift) ? $data->IsGift : null;
         $this->returnsAccepted = isset($data->ReturnsAccepted) ? $data->ReturnsAccepted : null;
-        $this->items = isset($data->Items) ? $data->Items : null;
+        if (isset($data->Items)) {
+            foreach ($data->Items as $item) {
+                $analysisItem = new FraudAnalysisItem();
+                $analysisItem->populate($item);    
+                $this->items[] = $analysisItem;
+            }      
+        }
+
     }
 
     /**

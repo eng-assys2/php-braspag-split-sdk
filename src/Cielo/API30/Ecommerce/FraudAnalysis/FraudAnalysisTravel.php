@@ -22,7 +22,9 @@ class FraudAnalysisTravel implements CieloSerializable
      * FraudAnalysisTravel constructor.
      *
      */
-    public function __construct($journeyType, $passengers, $departureTime=null)
+    public function __construct($journeyType=null,
+                                $passengers=null,
+                                $departureTime=null)
     {
         $this->journeyType = $journeyType;
         $this->departureTime = $departureTime;
@@ -44,7 +46,10 @@ class FraudAnalysisTravel implements CieloSerializable
     {
         $this->journeyType = isset($data->JourneyType) ? $data->JourneyType : null;
         $this->departureTime = isset($data->DepartureTime) ? $data->DepartureTime : null;
-        $this->passengers = isset($data->Passengers) ? $data->Passengers : null;
+        if (isset($data->Passengers)) {
+            $this->passengers = new FraudAnalysisPassenger();
+            $this->passengers->populate($data->Passengers);
+        }
     }
 
     /**

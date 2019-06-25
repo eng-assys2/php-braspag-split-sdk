@@ -83,7 +83,11 @@ class FraudAnalysisPassenger implements CieloSerializable
         $this->rating = isset($data->Rating) ? $data->Rating: null;
         $this->phone = isset($data->Phone) ? $data->Phone: null;
         $this->status = isset($data->Status) ? $data->Status: null;
-        $this->travelLegs = isset($data->TravelLegs) ? $data->TravelLegs: null;
+        
+        if (isset($data->TravelLegs)) {
+            $this->travelLegs = new FraudAnalysisTravelLegs();
+            $this->travelLegs->populate($data->TravelLegs);
+        }
     }
 
     /**
