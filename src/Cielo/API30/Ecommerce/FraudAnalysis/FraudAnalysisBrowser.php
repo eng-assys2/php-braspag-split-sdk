@@ -24,7 +24,11 @@ class FraudAnalysisBrowser implements CieloSerializable
      * FraudAnalysisBrowser constructor.
      *
      */
-    public function __construct($cookiesAccepted, $email, $hostName, $ipAddress, $type)
+    public function __construct($ipAddress,
+                                $cookiesAccepted = true,
+                                $email=null,
+                                $hostName=null,
+                                $type=null)
     {
         $this->cookiesAccepted = $cookiesAccepted;
         $this->email = $email;
