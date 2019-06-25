@@ -20,7 +20,7 @@ class FraudAnalysisMerchantDefinedFields implements CieloSerializable
      * FraudAnalysisMerchantDefinedFields constructor.
      *
      */
-    public function __construct($id, $value)
+    public function __construct($id=null, $value=null)
     {
         $this->id = $id;
         $this->value = $value;
