@@ -70,7 +70,7 @@ class FraudAnalysis implements CieloSerializable
                                 $captureOnLowRisk=false,
                                 $voidOnHighRisk=false,
                                 $totalOrderAmount=0,
-                                $fingerPrintId='',
+                                $fingerPrintId=null,
                                 $browser=null,
                                 $cart=null,
                                 $merchantDefinedFields=null,
