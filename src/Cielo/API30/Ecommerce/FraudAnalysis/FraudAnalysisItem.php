@@ -109,10 +109,10 @@ class FraudAnalysisItem implements CieloSerializable
      * FraudAnalysisItem constructor.
      *
      */
-    public function __construct($name,
-                                $quantity,
-                                $sku,
-                                $unitPrice,
+    public function __construct($name=null,
+                                $quantity=null,
+                                $sku=null,
+                                $unitPrice=null,
                                 $giftCategory=null,
                                 $hostHedge=null,
                                 $nonSensicalHedge=null,
