@@ -111,11 +111,31 @@ class FraudAnalysis implements CieloSerializable
         $this->voidOnHighRisk = isset($data->VoidOnHighRisk) ? $data->VoidOnHighRisk : null;
         $this->totalOrderAmount = isset($data->TotalOrderAmount) ? $data->TotalOrderAmount : null;
         $this->fingerPrintId = isset($data->FingerPrintId) ? $data->FingerPrintId : null;
-        $this->browser = isset($data->Browser) ? $data->Browser : null;
-        $this->cart = isset($data->Cart) ? $data->Cart : null;
-        $this->merchantDefinedFields = isset($data->MerchantDefinedFields) ? $data->MerchantDefinedFields : null;
-        $this->shipping = isset($data->Shipping) ? $data->Shipping : null;
-        $this->travel = isset($data->Travel) ? $data->Travel : null;
+
+        if (isset($data->Browser)) {
+            $this->browser = new FraudAnalysisBrowser(false);
+            $this->browser->populate($data->Browser);
+        }
+
+        if (isset($data->Cart)) {
+            $this->cart = new FraudAnalysisCart(false);
+            $this->cart->populate($data->Cart);
+        }
+
+        if (isset($data->MerchantDefinedFields)) {
+            $this->merchantDefinedFields = new FraudAnalysisMerchantDefinedFields(false);
+            $this->merchantDefinedFields->populate($data->MerchantDefinedFields);
+        }
+
+        if (isset($data->Shipping)) {
+            $this->shipping = new FraudAnalysisShipping(false);
+            $this->shipping->populate($data->Shipping);
+        }
+
+        if (isset($data->Travel)) {
+            $this->travel = new FraudAnalysisTravel(false);
+            $this->travel->populate($data->Travel);
+        }
     }
     
     /**
@@ -245,6 +265,17 @@ class FraudAnalysis implements CieloSerializable
     }
 
     /**
+     * @param $ipAddress
+     *
+     * @return $this
+     */
+    public function browser($ipAddress){
+        $browser = new FraudAnalysisBrowser($ipAddress);
+        $this->browser = $browser;
+        return $this;
+    }
+
+    /**
      * @param $browser
      *
      * @return $this
@@ -276,6 +307,20 @@ class FraudAnalysis implements CieloSerializable
      */
     public function getMerchantDefinedFields(){
         return $this->merchantDefinedFields;
+    }
+
+    /**
+     * @param $id
+     * @param $value
+     *
+     * @return FraudAnalysisMerchantDefinedFields
+     */
+    public function addMerchantDefinedFields($id, $value)
+    {
+        $merchantDefinedFields = new FraudAnalysisMerchantDefinedFields($id, $value);
+        $this->merchantDefinedFields[] = $merchantDefinedFields;
+
+        return $this;
     }
 
     /**

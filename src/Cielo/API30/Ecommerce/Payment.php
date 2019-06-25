@@ -1172,14 +1172,14 @@ class Payment implements \JsonSerializable
     /**
      * @param $subordinateMerchantId
      *
-     * @return SplitPayment
+     * @return $this
      */
     public function addSplitPayment($subordinateMerchantId)
     {
         $splitPayment = new SplitPayment($subordinateMerchantId);
         $this->splitPayments[] = $splitPayment;
 
-        return $splitPayment;
+        return $this;
     }
 
     /**
@@ -1212,5 +1212,18 @@ class Payment implements \JsonSerializable
         $this->fraudAnalysis = $fraudAnalysis;
 
         return $this;
+    }
+
+    /**
+     * @param $subordinateMerchantId
+     *
+     * @return FraudAnalysis
+     */
+    public function fraudAnalysis()
+    {
+        $fraudAnalysis = new FraudAnalysis();
+        $this->fraudAnalysis = $fraudAnalysis;
+
+        return $fraudAnalysis;
     }
 }
