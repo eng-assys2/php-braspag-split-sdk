@@ -293,6 +293,18 @@ class FraudAnalysis implements CieloSerializable
     }
 
     /**
+     * @param $ipAddress
+     *
+     * @return FraudAnalysisCart
+     */
+    public function cart($name, $quantity, $sku, $unitPrice){
+        $item = new FraudAnalysisItem("Produto teste", 1, 563, 1000);
+        $cart = new FraudAnalysisCart($item);
+        $this->cart = $cart;
+        return $cart;
+    }
+
+    /**
      * @param $cart
      *
      * @return $this
@@ -338,6 +350,19 @@ class FraudAnalysis implements CieloSerializable
      */
     public function getShipping(){
         return $this->shipping;
+    }
+
+    /**
+     * @param $addressee
+     *
+     * @return FraudAnalysisShipping
+     */
+    public function shipping($addressee)
+    {
+        $shipping = new FraudAnalysisShipping($addressee);
+        $this->shipping = $shipping;
+
+        return $shipping;
     }
 
     /**

@@ -24,7 +24,7 @@ class FraudAnalysisCart implements CieloSerializable
                                 $isGift=false,
                                 $returnsAccepted=false)
     {
-        $this->items = $items;
+        $this->items = is_array($items) ? $items : [$items];
         $this->isGift = $isGift;
         $this->returnsAccepted = $returnsAccepted;
     }
