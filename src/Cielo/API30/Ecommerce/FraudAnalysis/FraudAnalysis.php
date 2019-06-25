@@ -115,27 +115,27 @@ class FraudAnalysis implements CieloSerializable
         $this->fingerPrintId = isset($data->FingerPrintId) ? $data->FingerPrintId : null;
 
         if (isset($data->Browser)) {
-            $this->browser = new FraudAnalysisBrowser(false);
+            $this->browser = new FraudAnalysisBrowser();
             $this->browser->populate($data->Browser);
         }
 
         if (isset($data->Cart)) {
-            $this->cart = new FraudAnalysisCart(false);
+            $this->cart = new FraudAnalysisCart();
             $this->cart->populate($data->Cart);
         }
 
         if (isset($data->MerchantDefinedFields)) {
-            $this->merchantDefinedFields = new FraudAnalysisMerchantDefinedFields(false);
+            $this->merchantDefinedFields = new FraudAnalysisMerchantDefinedFields();
             $this->merchantDefinedFields->populate($data->MerchantDefinedFields);
         }
 
         if (isset($data->Shipping)) {
-            $this->shipping = new FraudAnalysisShipping(false);
+            $this->shipping = new FraudAnalysisShipping();
             $this->shipping->populate($data->Shipping);
         }
 
         if (isset($data->Travel)) {
-            $this->travel = new FraudAnalysisTravel(false);
+            $this->travel = new FraudAnalysisTravel();
             $this->travel->populate($data->Travel);
         }
     }
