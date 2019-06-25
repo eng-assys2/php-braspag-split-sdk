@@ -56,7 +56,7 @@ class FraudAnalysisShipping implements CieloSerializable
     public function populate(\stdClass $data)
     {
         $this->addressee = isset($data->Addressee) ? $data->Addressee : null;
-        $this->method = isset($data->Method) ? $data->method : null;
+        $this->method = isset($data->Method) ? $data->Method : null;
         $this->phone = isset($data->Phone) ? $data->Phone : null;
     }
 
