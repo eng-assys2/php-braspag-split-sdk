@@ -1172,14 +1172,14 @@ class Payment implements \JsonSerializable
     /**
      * @param $subordinateMerchantId
      *
-     * @return $this
+     * @return SplitPayment
      */
-    public function addSplitPayment($subordinateMerchantId)
+    public function splitPayment($subordinateMerchantId)
     {
         $splitPayment = new SplitPayment($subordinateMerchantId);
         $this->splitPayments[] = $splitPayment;
 
-        return $this;
+        return $splitPayment;
     }
 
     /**

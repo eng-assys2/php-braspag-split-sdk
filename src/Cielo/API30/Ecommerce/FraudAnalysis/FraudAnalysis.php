@@ -315,12 +315,12 @@ class FraudAnalysis implements CieloSerializable
      *
      * @return FraudAnalysisMerchantDefinedFields
      */
-    public function addMerchantDefinedFields($id, $value)
+    public function merchantDefinedFields($id, $value)
     {
         $merchantDefinedFields = new FraudAnalysisMerchantDefinedFields($id, $value);
         $this->merchantDefinedFields[] = $merchantDefinedFields;
 
-        return $this;
+        return $merchantDefinedFields;
     }
 
     /**

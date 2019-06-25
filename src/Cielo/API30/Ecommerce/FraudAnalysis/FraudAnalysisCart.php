@@ -103,7 +103,7 @@ class FraudAnalysisCart implements CieloSerializable
      *
      * @return FraudAnalysisItem
      */
-    public function addItem($name, $quantity, $sku, $unitPrice)
+    public function item($name, $quantity, $sku, $unitPrice)
     {
         $item = new FraudAnalysisItem($name, $quantity, $sku, $unitPrice);
         $this->items[] = $item;
