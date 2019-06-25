@@ -2,12 +2,14 @@
 
 namespace Cielo\API30\Ecommerce\SplitPayment;
 
+use Cielo\API30\Ecommerce\CieloSerializable;
+
 /**
  * Class SplitPaymentFares
  *
  * @package Cielo\API30\Ecommerce
  */
-class SplitPaymentFares implements \JsonSerializable
+class SplitPaymentFares implements CieloSerializable
 {
 
     private $mdr;

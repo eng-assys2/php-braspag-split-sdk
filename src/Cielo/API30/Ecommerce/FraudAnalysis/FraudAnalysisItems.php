@@ -2,6 +2,8 @@
 
 namespace Cielo\API30\Ecommerce\FraudAnalysis;
 
+use Cielo\API30\Ecommerce\CieloSerializable;
+
 /**
  * Class FraudAnalysisItem
  *
