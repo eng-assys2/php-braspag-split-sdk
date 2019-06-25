@@ -20,7 +20,7 @@ class SplitPayment implements CieloSerializable
      * SplitPayment constructor.
      *
      */
-    public function __construct($subordinateMerchantId, $amount = 0, $fares=null)
+    public function __construct($subordinateMerchantId=null, $amount = 0, $fares=null)
     {
         $this->subordinateMerchantId = $subordinateMerchantId;
         $this->amount = $amount;
