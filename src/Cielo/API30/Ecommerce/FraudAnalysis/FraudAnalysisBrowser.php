@@ -33,7 +33,7 @@ class FraudAnalysisBrowser implements CieloSerializable
      * FraudAnalysisBrowser constructor.
      *
      */
-    public function __construct($ipAddress,
+    public function __construct($ipAddress=null,
                                 $cookiesAccepted = true,
                                 $email=null,
                                 $hostName=null,
