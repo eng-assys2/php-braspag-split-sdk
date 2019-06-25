@@ -267,12 +267,12 @@ class FraudAnalysis implements CieloSerializable
     /**
      * @param $ipAddress
      *
-     * @return $this
+     * @return FraudAnalysisBrowser
      */
     public function browser($ipAddress){
         $browser = new FraudAnalysisBrowser($ipAddress);
         $this->browser = $browser;
-        return $this;
+        return $browser;
     }
 
     /**
