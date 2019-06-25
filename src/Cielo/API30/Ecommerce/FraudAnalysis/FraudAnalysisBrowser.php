@@ -9,11 +9,15 @@ namespace Cielo\API30\Ecommerce\FraudAnalysis;
  */
 class FraudAnalysisBrowser implements CieloSerializable
 {
- 
+    /** @var boolean Booleano para identificar se o browser do cliente aceita cookies. */
     private $cookiesAccepted;
+    /** @var string|null E-mail registrado no browser do comprador. */
     private $email;
+    /** @var string|null Nome do host onde o comprador estava antes de entrar no site da loja. */
     private $hostName;
+    /** @var string Endereço IP do comprador. É altamente recomendável o envio deste campo. */
     private $ipAddress;
+    /** @var string|null Nome do browser utilizado pelo comprador. */
     private $type;
 
     /**
