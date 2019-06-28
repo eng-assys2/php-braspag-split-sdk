@@ -11,9 +11,22 @@ use Cielo\API30\Ecommerce\CieloSerializable;
  */
 class ExternalAuthentication implements CieloSerializable
 {
-
+    /** @var string 
+     * O valor Cavv é retornado pelo mecanismo de autenticação.
+     * Tamanho: 28
+     */
     private $cavv;
+
+    /** @var string 
+     * O valor Xid é retornado pelo mecanismo de autenticação.
+     * Tamanho: 28
+     */
     private $xid;
+
+    /** @var integer 
+     * O valor Eci é retornado pelo mecanismo de autenticação.
+     * Tamanho: 1
+     */
     private $eci;
 
     /**
