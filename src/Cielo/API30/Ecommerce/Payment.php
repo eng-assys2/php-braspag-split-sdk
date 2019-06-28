@@ -329,6 +329,34 @@ class Payment implements \JsonSerializable
      */
     private $isQrCode;
 
+    /** @var string|null 
+     * Código de retorno da Operação.
+     * Tamanho: 32
+     * Formato: Texto alfanumérico	
+     */
+    private $reasonCode;
+
+    /** @var string|null 
+     * Mensagem de retorno da Operação.
+     * Tamanho: 512
+     * Formato: Texto alfanumérico	
+     */
+    private $reasonMessage;
+
+    /** @var string|null 
+     * Código de retorno do Provider.
+     * Tamanho: 32
+     * Formato: Texto alfanumérico	
+     */
+    private $providerReturnCode;
+
+    /** @var string|null 
+     * Mensagem de retorno do Provider.
+     * Tamanho: 512
+     * Formato: Texto alfanumérico	
+     */
+    private $providerReturnMessage;
+
     /**
      * Payment constructor.
      *
@@ -428,6 +456,12 @@ class Payment implements \JsonSerializable
         $this->demonstrative  = isset($data->Demonstrative) ? $data->Demonstrative : null;
         $this->identification = isset($data->Identification) ? $data->Identification : null;
         $this->instructions   = isset($data->Instructions) ? $data->Instructions : null;
+
+        $this->reasonCode   = isset($data->ReasonCode) ? $data->ReasonCode : null;
+        $this->reasonMessage   = isset($data->ReasonMessage) ? $data->ReasonMessage : null;
+        $this->providerReturnCode   = isset($data->ProviderReturnCode) ? $data->ProviderReturnCode : null;
+        $this->providerReturnMessage   = isset($data->ProviderReturnMessage) ? $data->ProviderReturnMessage : null;
+        
     }
 
     /**
@@ -1476,4 +1510,85 @@ class Payment implements \JsonSerializable
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getReasonCode()
+    {
+        return $this->reasonCode;
+    }
+
+    /**
+     * @param $reasonCode
+     *
+     * @return $this
+     */
+    public function setReasonCode($reasonCode)
+    {
+        $this->reasonCode = $reasonCode;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReasonMessage()
+    {
+        return $this->reasonMessage;
+    }
+
+    /**
+     * @param $reasonMessage
+     *
+     * @return $this
+     */
+    public function setReasonMessage($reasonMessage)
+    {
+        $this->reasonMessage = $reasonMessage;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProviderReturnCode()
+    {
+        return $this->providerReturnCode;
+    }
+
+    /**
+     * @param $providerReturnCode
+     *
+     * @return $this
+     */
+    public function setProviderReturnCode($providerReturnCode)
+    {
+        $this->providerReturnCode = $providerReturnCode;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProviderReturnMessage()
+    {
+        return $this->providerReturnMessage;
+    }
+
+    /**
+     * @param $providerReturnMessage
+     *
+     * @return $this
+     */
+    public function setProviderReturnMessage($providerReturnMessage)
+    {
+        $this->providerReturnMessage = $providerReturnMessage;
+
+        return $this;
+    }
+
 }
