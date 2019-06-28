@@ -4,6 +4,7 @@ namespace Cielo\API30\Ecommerce;
 
 use Cielo\API30\Ecommerce\SplitPayment\SplitPayment;
 use Cielo\API30\Ecommerce\FraudAnalysis\FraudAnalysis;
+use Cielo\API30\Ecommerce\VelocityAnalysis\VelocityAnalysis;
 
 /**
  * Class Payment
@@ -381,6 +382,14 @@ class Payment implements \JsonSerializable
      */
     private $externalAuthentication;
 
+    /** @var VelocityAnalysis|null 
+     * O Velocity é um tipo de mecanismo de prevenção à tentativas de fraude, que analisa 
+     * especificamente o conceito de “velocidade X dados transacionais”. 
+     * Ela analisa a frequência que determinados dados são utilizados e se esse dados estão 
+     * inscritos em uma lista de comportamentos passiveis de ações de segurança.
+     */
+    private $velocityAnalysis;
+
     /**
      * Payment constructor.
      *
@@ -492,6 +501,11 @@ class Payment implements \JsonSerializable
         if (isset($data->ExternalAuthentication)) {
             $this->externalAuthentication = new ExternalAuthentication();
             $this->externalAuthentication->populate($data->ExternalAuthentication);
+        }
+
+        if (isset($data->VelocityAnalysis)) {
+            $this->velocityAnalysis = new VelocityAnalysis();
+            $this->velocityAnalysis->populate($data->VelocityAnalysis);
         }
         
     }
@@ -1659,6 +1673,26 @@ class Payment implements \JsonSerializable
     public function setExternalAuthentication($externalAuthentication)
     {
         $this->externalAuthentication = $externalAuthentication;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVelocityAnalysis()
+    {
+        return $this->velocityAnalysis;
+    }
+
+    /**
+     * @param $velocityAnalysis
+     *
+     * @return $this
+     */
+    public function setVelocityAnalysis($velocityAnalysis)
+    {
+        $this->velocityAnalysis = $velocityAnalysis;
 
         return $this;
     }
