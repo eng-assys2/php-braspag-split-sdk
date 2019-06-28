@@ -324,6 +324,11 @@ class Payment implements \JsonSerializable
      */
     private $fraudAnalysis;
 
+    /** @var boolean|null 
+     * Indica que a transação utilizou QRCode
+     */
+    private $isQrCode;
+
     /**
      * Payment constructor.
      *
