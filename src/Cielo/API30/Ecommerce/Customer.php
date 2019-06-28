@@ -12,6 +12,8 @@ class Customer implements \JsonSerializable
 
     private $name;
 
+    private $status;
+
     private $email;
 
     private $birthDate;
@@ -23,6 +25,10 @@ class Customer implements \JsonSerializable
     private $address;
 
     private $deliveryAddress;
+
+    private $phone;
+
+    private $mobile;
 
     /**
      * Customer constructor.
@@ -48,6 +54,7 @@ class Customer implements \JsonSerializable
     public function populate(\stdClass $data)
     {
         $this->name      = isset($data->Name) ? $data->Name : null;
+        $this->status      = isset($data->Status) ? $data->Status : null;
         $this->email     = isset($data->Email) ? $data->Email : null;
         $this->birthDate = isset($data->Birthdate) ? $data->Birthdate : null;
 
@@ -63,6 +70,9 @@ class Customer implements \JsonSerializable
             $this->deliveryAddress = new Address();
             $this->deliveryAddress->populate($data->DeliveryAddress);
         }
+
+        $this->phone      = isset($data->Phone) ? $data->Phone : null;
+        $this->mobile      = isset($data->Mobile) ? $data->Mobile : null;
     }
 
     /**
@@ -105,6 +115,26 @@ class Customer implements \JsonSerializable
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param $status
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
 
         return $this;
     }
@@ -225,6 +255,46 @@ class Customer implements \JsonSerializable
     public function setDeliveryAddress($deliveryAddress)
     {
         $this->deliveryAddress = $deliveryAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param $phone
+     *
+     * @return $this
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * @param $mobile
+     *
+     * @return $this
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
 
         return $this;
     }
