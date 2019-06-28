@@ -221,6 +221,7 @@ class Payment implements \JsonSerializable
 
     /** @var byte|null 
      * Status da Transação
+     * No caso de uma transação de geração de QRCode de pagamento, o status inicial é 12 (Pending).
      */
     private $status;
 
@@ -328,6 +329,15 @@ class Payment implements \JsonSerializable
      * Indica que a transação utilizou QRCode
      */
     private $isQrCode;
+
+    /** @var string|null 
+     * QRCode codificado na base 64. 
+     * Por exemplo, a imagem poderá ser apresentada na página utilizando o código HTML como este:
+     * <img src=”data:image/png;base64,{código da imagem na base 64}”>
+     * Tamanho: variável
+     * Formato: Texto alfanumérico
+     */
+    private $qrCodeBase64Image;
 
     /** @var string|null 
      * Código de retorno da Operação.
@@ -456,6 +466,9 @@ class Payment implements \JsonSerializable
         $this->demonstrative  = isset($data->Demonstrative) ? $data->Demonstrative : null;
         $this->identification = isset($data->Identification) ? $data->Identification : null;
         $this->instructions   = isset($data->Instructions) ? $data->Instructions : null;
+
+        $this->isQrCode = isset($data->IsQrCode) ? $data->IsQrCode : null;
+        $this->qrCodeBase64Image = isset($data->QrCodeBase64Image) ? $data->QrCodeBase64Image : null;
 
         $this->reasonCode   = isset($data->ReasonCode) ? $data->ReasonCode : null;
         $this->reasonMessage   = isset($data->ReasonMessage) ? $data->ReasonMessage : null;
@@ -1507,6 +1520,26 @@ class Payment implements \JsonSerializable
     public function setIsQrCode($isQrCode)
     {
         $this->isQrCode = $isQrCode;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQrCodeBase64Image()
+    {
+        return $this->qrCodeBase64Image;
+    }
+
+    /**
+     * @param $qrCodeBase64Image
+     *
+     * @return $this
+     */
+    public function setQrCodeBase64Image($qrCodeBase64Image)
+    {
+        $this->qrCodeBase64Image = $qrCodeBase64Image;
 
         return $this;
     }
