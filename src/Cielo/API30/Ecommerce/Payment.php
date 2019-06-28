@@ -45,6 +45,8 @@ class Payment implements \JsonSerializable
 
     private $recurrentPayment;
 
+    private $isSplitted;
+
     private $splitPayments;
 
     private $creditCard;
@@ -118,6 +120,8 @@ class Payment implements \JsonSerializable
     private $instructions;
 
     private $fraudAnalysis;
+
+    private $isQrCode;
 
     /**
      * Payment constructor.
@@ -1197,6 +1201,26 @@ class Payment implements \JsonSerializable
     /**
      * @return mixed
      */
+    public function getIsSplitted()
+    {
+        return $this->isSplitted;
+    }
+
+    /**
+     * @param $isSplitted
+     *
+     * @return $this
+     */
+    public function setIsSplitted($isSplitted)
+    {
+        $this->isSplitted = $isSplitted;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getFraudAnalysis()
     {
         return $this->fraudAnalysis;
@@ -1225,5 +1249,25 @@ class Payment implements \JsonSerializable
         $this->fraudAnalysis = $fraudAnalysis;
 
         return $fraudAnalysis;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsQrCode()
+    {
+        return $this->isQrCode;
+    }
+
+    /**
+     * @param $isQrCode
+     *
+     * @return $this
+     */
+    public function setIsQrCode($isQrCode)
+    {
+        $this->isQrCode = $isQrCode;
+
+        return $this;
     }
 }
