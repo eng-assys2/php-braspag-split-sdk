@@ -107,6 +107,9 @@ class CreditCard implements \JsonSerializable, CieloSerializable
     /** @var \stdClass $links */
     private $links;
 
+    /** @var CardOnFile|null $cardOnFile */
+    private $cardOnFile;
+
     /**
      * @param string $json
      *
@@ -135,6 +138,11 @@ class CreditCard implements \JsonSerializable, CieloSerializable
         $this->cardToken      = isset($data->CardToken) ? $data->CardToken : null;
         $this->links          = isset($data->Links) ? $data->Links : new \stdClass();
         $this->customerName   = isset($data->CustomerName) ? $data->CustomerName : null;
+
+        if (isset($data->cardOnFile)) {
+            $this->cardOnFile = new CardOnFile();
+            $this->cardOnFile->populate($data->cardOnFile);
+        }
     }
 
     /**
@@ -316,4 +324,21 @@ class CreditCard implements \JsonSerializable, CieloSerializable
     {
         $this->links = $links;
     }
+
+    /**
+     * @return CardOnFile
+     */
+    public function getCardOnFile()
+    {
+        return $this->cardOnFile;
+    }
+
+    /**
+     * @param CardOnFile $cardOnFile
+     */
+    public function setCardOnFile($cardOnFile)
+    {
+        $this->cardOnFile = $cardOnFile;
+    }
+
 }
