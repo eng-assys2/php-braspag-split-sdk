@@ -10,24 +10,58 @@ namespace Cielo\API30\Ecommerce;
 class Customer implements \JsonSerializable
 {
 
+    /** @var string|null 
+     * Nome do Comprador.
+     * */
     private $name;
 
+    /** @var string|null 
+     * Status de cadastro do comprador na loja, valores possíveis: 
+     * NEW
+     * EXISTING
+     */
     private $status;
 
+    /** @var string|null 
+     * Email do Comprador.
+     */
     private $email;
 
+    /** @var date|null 
+     * Data de nascimento do Comprador.
+     */
     private $birthDate;
 
+    /** @var string|null 
+     * Número do RG, CPF ou CNPJ do Cliente.
+     */
     private $identity;
 
+    /** @var string|null 
+     * Tipo de documento de identificação do comprador, valores possíveis: 
+     * CFP
+     * CNPJ
+     * */
     private $identityType;
 
+    /** @var Address|null 
+     * Endereço do Comprador
+     */
     private $address;
 
+    /** @var Address|null 
+     * Endereço de entrega do Comprador para produtos físicos
+     */
     private $deliveryAddress;
 
+    /** @var string|null 
+     * Número de telefone fixo do comprador
+     */
     private $phone;
 
+    /** @var string|null 
+     * Número de telefone celular do comprador
+     */
     private $mobile;
 
     /**
