@@ -7,7 +7,7 @@ use Cielo\API30\Ecommerce\CieloSerializable;
 /**
  * Class SplitPaymentFares
  *
- * @package Cielo\API30\Ecommerce
+ * @package Cielo\API30\Ecommerce\SplitPayment
  */
 class SplitPaymentFares implements CieloSerializable
 {
