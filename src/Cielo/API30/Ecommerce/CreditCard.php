@@ -54,22 +54,48 @@ class CreditCard implements \JsonSerializable, CieloSerializable
      */
     const HIPERCARD = 'Hipercard';
 
-    /** @var string $cardNumber */
+    /** @var string
+     * Número do Cartão do Comprador
+     * Tamanho: 19
+     */
     private $cardNumber;
 
-    /** @var string $holder */
+    /** @var string|null
+     * Nome do Comprador impresso no cartão
+     * Tamanho: 25
+     */
     private $holder;
 
-    /** @var string $expirationDate */
+    /** @var string
+     * Data de validade impresso no cartão
+     * Tamanho: 7
+     */
     private $expirationDate;
 
-    /** @var string $securityCode */
+    /** @var string|null
+     * Código de segurança impresso no verso do cartão
+     * Tamanho: 4
+     */
     private $securityCode;
 
-    /** @var bool $saveCard */
+    /** @var bool
+     * O cartão deve ser salvo para o cliente?
+     */
     private $saveCard = false;
 
-    /** @var string $brand */
+    /** @var string
+     * Bandeira do cartão. Valores possíveis:
+     * Visa
+     * Master
+     * Amex
+     * Elo
+     * Aura
+     * JCB
+     * Diners
+     * Discover
+     * Hipercard
+     * Tamanho: 10
+     */
     private $brand;
 
     /** @var string $cardToken */
