@@ -58,9 +58,12 @@ class Payment implements \JsonSerializable
     private $capture = false;
 
     /** @var boolean|null 
-     * Define se o comprador será direcionado ao Banco emissor para autenticação do cartão
+     * Define se o comprador será direcionado ao Banco emissor para autenticação do cartão, ou seja,
+     * Indica se a transação deve ser autenticada (true) ou não (false).
+     * Para transações autenticadas externamente (fornecedor de autenticação de sua escolha), 
+     * este campo deve ser enviado com valor “True”, e no nó ExternalAuthentication deve-se enviar os dados 
+     * retornados pelo mecanismo de autenticação externa escolhido (XID, CAVV e ECI)
      * Default: false (se crédito)/ true (se débito)
-     * 
      */
     private $authenticate = false;
 
@@ -367,6 +370,17 @@ class Payment implements \JsonSerializable
      */
     private $providerReturnMessage;
 
+    /** @var ExternalAuthentication|null 
+     * Instância da classe de autenticação externa
+     * O processo de autenticação possibilita realizar uma venda (crédito ou débito) 
+     * a qual passará pelo processo de autenticação do banco emissor do cartão, 
+     * assim trazendo mais segurança para a venda e transferindo para o banco, o risco de fraude. 
+     * Este processo de autenticação pode ser feito junto ou separado da autorização, 
+     * e para os casos onde o estabelecimento opta por realizar a autenticação em um provedor
+     * externo (de sua escolha).
+     */
+    private $externalAuthentication;
+
     /**
      * Payment constructor.
      *
@@ -474,6 +488,11 @@ class Payment implements \JsonSerializable
         $this->reasonMessage   = isset($data->ReasonMessage) ? $data->ReasonMessage : null;
         $this->providerReturnCode   = isset($data->ProviderReturnCode) ? $data->ProviderReturnCode : null;
         $this->providerReturnMessage   = isset($data->ProviderReturnMessage) ? $data->ProviderReturnMessage : null;
+
+        if (isset($data->ExternalAuthentication)) {
+            $this->externalAuthentication = new ExternalAuthentication();
+            $this->externalAuthentication->populate($data->ExternalAuthentication);
+        }
         
     }
 
@@ -1620,6 +1639,26 @@ class Payment implements \JsonSerializable
     public function setProviderReturnMessage($providerReturnMessage)
     {
         $this->providerReturnMessage = $providerReturnMessage;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExternalAuthentication()
+    {
+        return $this->externalAuthentication;
+    }
+
+    /**
+     * @param $externalAuthentication
+     *
+     * @return $this
+     */
+    public function setExternalAuthentication($externalAuthentication)
+    {
+        $this->externalAuthentication = $externalAuthentication;
 
         return $this;
     }
