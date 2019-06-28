@@ -31,97 +31,298 @@ class Payment implements \JsonSerializable
 
     const PROVIDER_SIMULADO = 'Simulado';
 
+    /** @var integer|null 
+     * Taxa do serviço a ser capturado
+     * Tamanho: 15
+     */
     private $serviceTaxAmount;
 
+    /** @var integer 
+     * Número de Parcelas.
+     * Tamanho: 2
+     */
     private $installments;
 
+    /** @var string|null 
+     * Tipo de parcelamento. Possíveis valores:
+     * Loja (ByMerchant)
+     * Cartão (ByIssuer)
+     * Tamanho: 10
+     */
     private $interest;
 
+    /** @var boolean|null
+     * Booleano que identifica que a autorização deve ser com captura automática
+     * Default: false
+     */
     private $capture = false;
 
+    /** @var boolean|null 
+     * Define se o comprador será direcionado ao Banco emissor para autenticação do cartão
+     * Default: false (se crédito)/ true (se débito)
+     * 
+     */
     private $authenticate = false;
 
+    /** @var boolean|null 
+     * Marcação de uma transação de recorrencia não programada
+     * Tamanho: 5
+     */
     private $recurrent;
 
+    /** @var RecurrentPayment|null 
+     * Instância de Pagamento Recorrente
+     */
     private $recurrentPayment;
 
+    /** @var boolean|null 
+     * Marcação de uma Transação com Split de Pagamento da Braspag Ativado
+     * Tamanho: 5
+     */
     private $isSplitted;
 
+    /** @var SplitPayment|null 
+     * Instância de Pagamento Dividido
+     */
     private $splitPayments;
 
+    /** @var CreditCard|null 
+     * Cartão de crédito do comprador
+     */
     private $creditCard;
 
+    /** @var CreditCard|null 
+     * * Cartão de débito do comprador
+     */
     private $debitCard;
 
+    /** @var string|null 
+     * URL para qual o Lojista deve redirecionar o Cliente para o fluxo de Débito.
+     * Tamanho: 56
+     * Formato: Url de Autenticação
+     */
     private $authenticationUrl;
 
+    /** @var string|null 
+     * Id da transação na adquirente.
+     * Tamanho: 13
+     */
     private $tid;
 
+    /** @var string|null 
+     * Número da autorização, identico ao NSU.
+     * Tamanho: 6
+     * Formato: Texto alfanumérico
+     */
     private $proofOfSale;
 
+    /** @var string|null 
+     * Código de autorização.
+     * Tamanho: 6
+     * Formato: Texto alfanumérico
+     */
     private $authorizationCode;
 
+    /** @var string|null 
+     * Texto impresso na fatura bancaria comprador
+     * Exclusivo para VISA/MASTER
+     * não permite caracteres especiais
+     * Tamanho: 13
+     */
     private $softDescriptor = "";
 
+    /** @var string 
+     * URI para onde o usuário será redirecionado após o fim do pagamento
+     * Url de retorno do lojista. URL para onde o lojista vai ser redirecionado no final do fluxo.
+     * Formato: http://www.urllogista.com.br
+     * Tamanho: 1024
+     */
     private $returnUrl;
 
+    /** @var string|null 
+     * Define comportamento do meio de pagamento
+     * NÃO OBRIGATÓRIO PARA CRÉDITO
+     * Tamanho: 15
+     */
     private $provider;
 
+    /** @var string|null 
+     * Campo Identificador do Pedido
+     * Tamanho: 36
+     * Formato: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+     */
     private $paymentId;
 
+    /** @var string 
+     * Tipo do Meio de Pagamento
+     * Tamanho: 100
+     * Obs: Enviar qrcode para uma transação de QRCode.
+     */
     private $type;
 
+    /** @var integer|null 
+     * Valor do Pedido
+     * Deve ser enviado em centavos
+     * Tamanho: 15
+     */
     private $amount;
 
+    /** @var datetime|null 
+     * Data de Recebimento do Pedido
+     * Tamanho: 23
+     */
     private $receivedDate;
 
+    /** @var integer|null 
+     * Valor Capturado
+     */
     private $capturedAmount;
 
+    /** @var datetime|null 
+     * Data da captura
+     */
     private $capturedDate;
 
+    /** @var integer|null 
+     * Valor cancelado
+     */
     private $voidedAmount;
 
+    /** @var datetime|null 
+     * Data do cancelamento
+     */
     private $voidedDate;
 
+    /** @var string 
+     * Moeda na qual o pagamento será feito (BRL)
+     * Tamanho: 3
+     */
     private $currency;
 
+    /** @var string|null 
+     * Pais no qual o pagamento será feito
+     * Tamanho: 3
+     */
     private $country;
 
+    /** @var string|null 
+     * Código de retorno da Adquirência.
+     * Tamanho: 32
+     * Formato: Texto alfanumérico
+     */
     private $returnCode;
 
+    /** @var string|null 
+     * Mensagem de retorno da Adquirência.
+     * Tamanho: 512
+     * Formato: Texto alfanumérico
+     */
     private $returnMessage;
 
+    /** @var byte|null 
+     * Status da Transação
+     */
     private $status;
 
+    /** @var \StdClass|null 
+     * Links com ações possíveis para se realizar com o pagamento
+     * 
+     */
     private $links;
 
+    /**
+     * 
+     */
     private $extraDataCollection;
 
+    /** @var date|null 
+     * Data de expiração do Boleto. Ex. 2020-12-31
+     * Tamanho: 10
+     * Obs: usado para boletos
+     */
     private $expirationDate;
 
+    /** @var string|null 
+     * Url do Boleto Gerado
+     * Tamanho: 256
+     * Ex:https://…/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d
+     * Obs: usado para boletos
+     */
     private $url;
 
+    /** @var string|null 
+     * "NossoNumero" gerado
+     * Tamanho: 50
+     * Ex: 1000000012-8
+     * Obs: usado para boletos
+     */
     private $number;
 
+    /** @var string|null 
+     * Número do Boleto enviado pelo lojista. Usado para contar boletos emitidos (“NossoNumero”)
+     * Tamanho: Bradesco 11, Banco do Brasil: 9
+     * Obs: usado para boletos
+     */
     private $boletoNumber;
 
+    /** @var string|null 
+     * Representação numérica do código de barras
+     * Tamanho: 44
+     * Ex: 00091628800000157000494250100000001200656560
+     * Obs: usado para boletos
+     */
     private $barCodeNumber;
 
+    /** @var string|null 
+     * Linha digitável
+     * Tamanho: 256
+     * Ex: 00090.49420 50100.000004 12006.565605 1 62880000015700
+     * Obs: usado para boletos
+     */
     private $digitableLine;
 
+    /** @var string|null 
+     * Endereço do cedente
+     * Tamanho: 255
+     * Obs: usado para boletos
+     */
     private $address;
 
+    /** @var string|null 
+     * Nome do Cedente
+     * Tamanho: 200
+     * * Obs: usado para boletos
+     */
     private $assignor;
 
+    /** @var string|null 
+     * Texto de demonstrativo
+     * Tamanho: 255
+     * Obs: usado para boletos
+     */
     private $demonstrative;
 
+    /** @var string|null 
+     * Documento de identificação do cedente
+     * Tamanho: 14
+     * CPF ou CNPJ do Cedente sem os caracteres especiais (., /, -)
+     * Obs: usado para boletos
+     */
     private $identification;
 
+    /** @var string|null 
+     * Instruções do Boleto
+     * Tamanho: 255
+     * Ex: Aceitar somente até a data de vencimento, após essa data juros de 1% dia
+     * Obs: usado para boletos
+     */
     private $instructions;
 
+    /** @var FraudAnalysis|null 
+     * Nó de análise de fraude
+     * 
+     */
     private $fraudAnalysis;
-
-    private $isQrCode;
 
     /**
      * Payment constructor.
