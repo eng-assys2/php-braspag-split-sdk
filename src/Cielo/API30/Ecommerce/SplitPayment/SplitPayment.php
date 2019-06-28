@@ -11,9 +11,20 @@ use Cielo\API30\Ecommerce\CieloSerializable;
  */
 class SplitPayment implements CieloSerializable
 {
-
+    /** @var string 
+     * MerchantId (Identificador) do Subordinado.	
+     * Tamanho: 36
+     */
     private $subordinateMerchantId;
+
+    /** @var string 
+     * Parte do valor total da transação referente a participação do Subordinado, em centavos.
+     */
     private $amount;
+
+    /** @var SplitPaymentFares 
+     * Taxas adicionais cobradas no split
+     */
     private $fares;
 
     /**
@@ -50,7 +61,7 @@ class SplitPayment implements CieloSerializable
      */
     public function populate(\stdClass $data)
     {
-        $this->subordinateMerchantId = isset($data->SubordinateMerchantId) ? !!$data->SubordinateMerchantId : false;
+        $this->subordinateMerchantId = isset($data->SubordinateMerchantId) ? $data->SubordinateMerchantId : null;
         $this->amount = isset($data->Amount) ? $data->Amount : null;
 
         if (isset($data->Fares)) {
@@ -76,22 +87,6 @@ class SplitPayment implements CieloSerializable
     }
 
     /**
-     * @return mixed
-     */
-    public function getAmount()
-    {
-        return $this->amount;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFares()
-    {
-        return $this->fares;
-    }
-
-    /**
      * @param $subordinateMerchantId
      *
      * @return $this
@@ -101,6 +96,14 @@ class SplitPayment implements CieloSerializable
         $this->subordinateMerchantId = $subordinateMerchantId;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 
     /**
@@ -116,15 +119,11 @@ class SplitPayment implements CieloSerializable
     }
 
     /**
-     * @param $fares
-     *
-     * @return $this
+     * @return mixed
      */
-    public function setFares($fares)
+    public function getFares()
     {
-        $this->fares = $fares;
-
-        return $this;
+        return $this->fares;
     }
 
     /**
@@ -140,6 +139,18 @@ class SplitPayment implements CieloSerializable
         $this->setFares($fares);
 
         return $fares;
+    }
+
+    /**
+     * @param $fares
+     *
+     * @return $this
+     */
+    public function setFares($fares)
+    {
+        $this->fares = $fares;
+
+        return $this;
     }
 
 }

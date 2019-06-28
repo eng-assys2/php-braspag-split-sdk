@@ -11,15 +11,21 @@ use Cielo\API30\Ecommerce\CieloSerializable;
  */
 class SplitPaymentFares implements CieloSerializable
 {
-
+    /** @var double|null 
+     * MDR(%) do Marketplace a ser descontado do valor referente a participação do Subordinado
+     */
     private $mdr;
+
+    /** @var integer|null 
+     * Tarifa (R$) a ser descontada do valor referente a participação do Subordinado, em centavos.
+     */
     private $fee;
 
     /**
      * SplitPaymentFares constructor.
      *
      */
-    public function __construct($mdr = null, $fee = null)
+    public function __construct($mdr = 0, $fee = 0)
     {
         $this->mdr = $mdr;
         $this->fee = $fee;
@@ -34,13 +40,13 @@ class SplitPaymentFares implements CieloSerializable
     {
         $object = json_decode($json);
 
-        $splitPayments = new SplitPaymentFares();
+        $fares = new SplitPaymentFares();
 
-        if (isset($object->SplitPaymentFares)) {
-            $splitPayments->populate($object->SplitPaymentFares);
+        if (isset($object->Fares)) {
+            $fares->populate($object->Fares);
         }
 
-        return $splitPayments;
+        return $fares;
     }
 
     /**
@@ -48,8 +54,8 @@ class SplitPaymentFares implements CieloSerializable
      */
     public function populate(\stdClass $data)
     {
-        $this->mdr = isset($data->Mdr) ? $data->Mdr : null;
-        $this->fee = isset($data->Fee) ? $data->Fee : null;
+        $this->mdr = isset($data->Mdr) ? $data->Mdr : 0;
+        $this->fee = isset($data->Fee) ? $data->Fee : 0;
     }
 
     /**
