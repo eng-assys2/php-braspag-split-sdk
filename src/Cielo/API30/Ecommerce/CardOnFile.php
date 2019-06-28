@@ -7,7 +7,7 @@ namespace Cielo\API30\Ecommerce;
  *
  * @package Cielo\API30\Ecommerce
  */
-class CardOnFile implements \JsonSerializable, CieloSerializable
+class CardOnFile implements CieloSerializable
 {
     /** @var string|null
      * First se o cartão foi armazenado e é seu primeiro uso.
