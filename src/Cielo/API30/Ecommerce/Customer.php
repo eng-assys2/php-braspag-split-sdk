@@ -12,6 +12,7 @@ class Customer implements \JsonSerializable
 
     /** @var string|null 
      * Nome do Comprador.
+     * Tamanho: 255
      * */
     private $name;
 
@@ -19,21 +20,25 @@ class Customer implements \JsonSerializable
      * Status de cadastro do comprador na loja, valores possíveis: 
      * NEW
      * EXISTING
+     * * Tamanho: 255
      */
     private $status;
 
     /** @var string|null 
      * Email do Comprador.
+     * * Tamanho: 255
      */
     private $email;
 
     /** @var date|null 
      * Data de nascimento do Comprador.
+     * * Tamanho: 10
      */
     private $birthDate;
 
     /** @var string|null 
      * Número do RG, CPF ou CNPJ do Cliente.
+     * * Tamanho: 14
      */
     private $identity;
 
@@ -41,6 +46,7 @@ class Customer implements \JsonSerializable
      * Tipo de documento de identificação do comprador, valores possíveis: 
      * CFP
      * CNPJ
+     * * Tamanho: 255
      * */
     private $identityType;
 
@@ -56,11 +62,13 @@ class Customer implements \JsonSerializable
 
     /** @var string|null 
      * Número de telefone fixo do comprador
+     * * Tamanho: 
      */
     private $phone;
 
     /** @var string|null 
      * Número de telefone celular do comprador
+     * * Tamanho: 
      */
     private $mobile;
 
