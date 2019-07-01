@@ -46,9 +46,13 @@ class FraudAnalysisTravel implements CieloSerializable
     {
         $this->journeyType = isset($data->JourneyType) ? $data->JourneyType : null;
         $this->departureTime = isset($data->DepartureTime) ? $data->DepartureTime : null;
+
         if (isset($data->Passengers)) {
-            $this->passengers = new FraudAnalysisPassenger();
-            $this->passengers->populate($data->Passengers);
+            foreach ($data->Passengers as $passenger) {
+                $analysisPassenger = new FraudAnalysisPassenger();
+                $analysisPassenger->populate($passenger);    
+                $this->passengers[] = $analysisPassenger;
+            }      
         }
     }
 
@@ -98,6 +102,33 @@ class FraudAnalysisTravel implements CieloSerializable
     public function getPassengers()
     {
         return $this->passengers;
+    }
+
+    /**
+     * @param $email
+     * @param $identity
+     * @param $name
+     * @param $rating
+     * @param $phone
+     * @param $status
+     *
+     * @return FraudAnalysisPassenger
+     */
+    public function passenger($email=null,
+                                $identity=null,
+                                $name=null,
+                                $rating=null,
+                                $phone=null,
+                                $status=null)
+    {
+        $passenger = new FraudAnalysisPassenger($email,
+                                                $identity,
+                                                $name,
+                                                $rating,
+                                                $phone,
+                                                $status);
+        $this->passengers[] = $passenger;
+        return $passenger;
     }
 
     /**
