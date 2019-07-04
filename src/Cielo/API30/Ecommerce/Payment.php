@@ -420,7 +420,6 @@ class Payment implements \JsonSerializable
      */
     public function populate(\stdClass $data)
     {
-
         $this->serviceTaxAmount = isset($data->ServiceTaxAmount) ? $data->ServiceTaxAmount : null;
         $this->installments = isset($data->Installments) ? $data->Installments : null;
         $this->interest = isset($data->Interest) ? $data->Interest : null;
@@ -451,23 +450,23 @@ class Payment implements \JsonSerializable
         $this->extraDataCollection = isset($data->ExtraDataCollection) ? $data->ExtraDataCollection : [];
         
         $this->expirationDate = isset($data->ExpirationDate) ? $data->ExpirationDate : null;
-        $this->url            = isset($data->Url) ? $data->Url : null;
-        $this->boletoNumber   = isset($data->BoletoNumber) ? $data->BoletoNumber : null;
-        $this->barCodeNumber  = isset($data->BarCodeNumber) ? $data->BarCodeNumber : null;
-        $this->digitableLine  = isset($data->DigitableLine) ? $data->DigitableLine : null;
-        $this->address        = isset($data->Address) ? $data->Address : null;
-        $this->assignor       = isset($data->Assignor) ? $data->Assignor : null;
-        $this->demonstrative  = isset($data->Demonstrative) ? $data->Demonstrative : null;
+        $this->url = isset($data->Url) ? $data->Url : null;
+        $this->boletoNumber = isset($data->BoletoNumber) ? $data->BoletoNumber : null;
+        $this->barCodeNumber = isset($data->BarCodeNumber) ? $data->BarCodeNumber : null;
+        $this->digitableLine = isset($data->DigitableLine) ? $data->DigitableLine : null;
+        $this->address = isset($data->Address) ? $data->Address : null;
+        $this->assignor = isset($data->Assignor) ? $data->Assignor : null;
+        $this->demonstrative = isset($data->Demonstrative) ? $data->Demonstrative : null;
         $this->identification = isset($data->Identification) ? $data->Identification : null;
-        $this->instructions   = isset($data->Instructions) ? $data->Instructions : null;
+        $this->instructions = isset($data->Instructions) ? $data->Instructions : null;
 
         $this->isQrCode = isset($data->IsQrCode) ? $data->IsQrCode : null;
         $this->qrCodeBase64Image = isset($data->QrCodeBase64Image) ? $data->QrCodeBase64Image : null;
 
-        $this->reasonCode   = isset($data->ReasonCode) ? $data->ReasonCode : null;
-        $this->reasonMessage   = isset($data->ReasonMessage) ? $data->ReasonMessage : null;
-        $this->providerReturnCode   = isset($data->ProviderReturnCode) ? $data->ProviderReturnCode : null;
-        $this->providerReturnMessage   = isset($data->ProviderReturnMessage) ? $data->ProviderReturnMessage : null;
+        $this->reasonCode = isset($data->ReasonCode) ? $data->ReasonCode : null;
+        $this->reasonMessage = isset($data->ReasonMessage) ? $data->ReasonMessage : null;
+        $this->providerReturnCode = isset($data->ProviderReturnCode) ? $data->ProviderReturnCode : null;
+        $this->providerReturnMessage = isset($data->ProviderReturnMessage) ? $data->ProviderReturnMessage : null;
 
         if (isset($data->CreditCard)) {
             $this->creditCard = new CreditCard();
@@ -508,7 +507,6 @@ class Payment implements \JsonSerializable
             $this->velocityAnalysis = new VelocityAnalysis();
             $this->velocityAnalysis->populate($data->VelocityAnalysis);
         }
-        
     }
 
     /**
