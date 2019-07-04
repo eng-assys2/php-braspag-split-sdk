@@ -68,38 +68,6 @@ class Payment implements \JsonSerializable
      */
     private $authenticate = false;
 
-    /** @var boolean|null 
-     * Marcação de uma transação de recorrencia não programada
-     * Tamanho: 5
-     */
-    private $recurrent;
-
-    /** @var RecurrentPayment|null 
-     * Instância de Pagamento Recorrente
-     */
-    private $recurrentPayment;
-
-    /** @var boolean|null 
-     * Marcação de uma Transação com Split de Pagamento da Braspag Ativado
-     * Tamanho: 5
-     */
-    private $isSplitted;
-
-    /** @var SplitPayment|null 
-     * Instância de Pagamento Dividido
-     */
-    private $splitPayments;
-
-    /** @var CreditCard|null 
-     * Cartão de crédito do comprador
-     */
-    private $creditCard;
-
-    /** @var CreditCard|null 
-     * * Cartão de débito do comprador
-     */
-    private $debitCard;
-
     /** @var string|null 
      * URL para qual o Lojista deve redirecionar o Cliente para o fluxo de Débito.
      * Tamanho: 56
@@ -323,12 +291,6 @@ class Payment implements \JsonSerializable
      */
     private $instructions;
 
-    /** @var FraudAnalysis|null 
-     * Nó de análise de fraude
-     * 
-     */
-    private $fraudAnalysis;
-
     /** @var boolean|null 
      * Indica que a transação utilizou QRCode
      */
@@ -370,6 +332,44 @@ class Payment implements \JsonSerializable
      * Formato: Texto alfanumérico	
      */
     private $providerReturnMessage;
+
+    /** @var CreditCard|null 
+     * Cartão de crédito do comprador
+     */
+    private $creditCard;
+
+    /** @var CreditCard|null 
+     * * Cartão de débito do comprador
+     */
+    private $debitCard;
+
+    /** @var boolean|null 
+     * Marcação de uma transação de recorrencia não programada
+     * Tamanho: 5
+     */
+    private $recurrent;
+
+    /** @var RecurrentPayment|null 
+     * Instância de Pagamento Recorrente
+     */
+    private $recurrentPayment;
+
+    /** @var boolean|null 
+     * Marcação de uma Transação com Split de Pagamento da Braspag Ativado
+     * Tamanho: 5
+     */
+    private $isSplitted;
+
+    /** @var SplitPayment|null 
+     * Instância de Pagamento Dividido
+     */
+    private $splitPayments;
+
+    /** @var FraudAnalysis|null 
+     * Nó de análise de fraude
+     * 
+     */
+    private $fraudAnalysis;
 
     /** @var ExternalAuthentication|null 
      * Instância da classe de autenticação externa
@@ -422,69 +422,40 @@ class Payment implements \JsonSerializable
     {
 
         $this->serviceTaxAmount = isset($data->ServiceTaxAmount) ? $data->ServiceTaxAmount : null;
-        $this->installments     = isset($data->Installments) ? $data->Installments : null;
-        $this->interest         = isset($data->Interest) ? $data->Interest : null;
-        $this->capture          = isset($data->Capture) ? !!$data->Capture : false;
-        $this->authenticate     = isset($data->Authenticate) ? !!$data->Authenticate : false;
-        $this->recurrent        = isset($data->Recurrent) ? !!$data->Recurrent : false;
+        $this->installments = isset($data->Installments) ? $data->Installments : null;
+        $this->interest = isset($data->Interest) ? $data->Interest : null;
+        $this->capture = isset($data->Capture) ? !!$data->Capture : false;
+        $this->authenticate = isset($data->Authenticate) ? !!$data->Authenticate : false;
+        $this->authenticationUrl = isset($data->AuthenticationUrl) ? $data->AuthenticationUrl : null;
+        $this->tid = isset($data->Tid) ? $data->Tid : null;
+        $this->proofOfSale = isset($data->ProofOfSale) ? $data->ProofOfSale : null;
+        $this->authorizationCode = isset($data->AuthorizationCode) ? $data->AuthorizationCode : null;
+        $this->softDescriptor = isset($data->SoftDescriptor) ? $data->SoftDescriptor : null;
+        $this->returnUrl = isset($data->ReturnUrl) ? $data->ReturnUrl : null;
+        $this->provider = isset($data->Provider) ? $data->Provider : null;
+        $this->paymentId = isset($data->PaymentId) ? $data->PaymentId : null;
+        $this->type = isset($data->Type) ? $data->Type : null;
+        $this->amount = isset($data->Amount) ? $data->Amount : null;
+        $this->receivedDate = isset($data->ReceivedDate) ? $data->ReceivedDate : null;
+        $this->capturedAmount = isset($data->CapturedAmount) ? $data->CapturedAmount : null;
+        $this->capturedDate = isset($data->CapturedDate) ? $data->CapturedDate : null;
+        $this->voidedAmount = isset($data->VoidedAmount) ? $data->VoidedAmount : null;
+        $this->voidedDate = isset($data->VoidedDate) ? $data->VoidedDate : null;
+        $this->currency = isset($data->Currency) ? $data->Currency : null;
+        $this->country = isset($data->Country) ? $data->Country : null;
+        $this->returnCode = isset($data->ReturnCode) ? $data->ReturnCode : null;
+        $this->returnMessage = isset($data->ReturnMessage) ? $data->ReturnMessage : null;
+        $this->status = isset($data->Status) ? $data->Status : null;
 
-        if (isset($data->SplitPayments)) {
-            foreach ($data->SplitPayments as $splitPayment) {
-                $splittedPayment = new SplitPayment();
-                $splittedPayment->populate($splitPayment);    
-                $this->recurrentPayment[] = $splittedPayment;
-            }      
-        }
-
-        if (isset($data->RecurrentPayment)) {
-            $this->recurrentPayment = new RecurrentPayment(false);
-            $this->recurrentPayment->populate($data->RecurrentPayment);
-        }
-
-        if (isset($data->CreditCard)) {
-            $this->creditCard = new CreditCard();
-            $this->creditCard->populate($data->CreditCard);
-        }
-
-        if (isset($data->DebitCard)) {
-            $this->debitCard = new CreditCard();
-            $this->debitCard->populate($data->DebitCard);
-        }
-
-        if (isset($data->FraudAnalysis)) {
-            $this->fraudAnalysis = new FraudAnalysis();
-            $this->fraudAnalysis->populate($data->FraudAnalysis);
-        }
-
+        $this->links = isset($data->Links) ? $data->Links : [];
+        $this->extraDataCollection = isset($data->ExtraDataCollection) ? $data->ExtraDataCollection : [];
+        
         $this->expirationDate = isset($data->ExpirationDate) ? $data->ExpirationDate : null;
         $this->url            = isset($data->Url) ? $data->Url : null;
         $this->boletoNumber   = isset($data->BoletoNumber) ? $data->BoletoNumber : null;
         $this->barCodeNumber  = isset($data->BarCodeNumber) ? $data->BarCodeNumber : null;
         $this->digitableLine  = isset($data->DigitableLine) ? $data->DigitableLine : null;
         $this->address        = isset($data->Address) ? $data->Address : null;
-
-        $this->authenticationUrl = isset($data->AuthenticationUrl) ? $data->AuthenticationUrl : null;
-        $this->tid               = isset($data->Tid) ? $data->Tid : null;
-        $this->proofOfSale       = isset($data->ProofOfSale) ? $data->ProofOfSale : null;
-        $this->authorizationCode = isset($data->AuthorizationCode) ? $data->AuthorizationCode : null;
-        $this->softDescriptor    = isset($data->SoftDescriptor) ? $data->SoftDescriptor : null;
-        $this->provider          = isset($data->Provider) ? $data->Provider : null;
-        $this->paymentId         = isset($data->PaymentId) ? $data->PaymentId : null;
-        $this->type              = isset($data->Type) ? $data->Type : null;
-        $this->amount            = isset($data->Amount) ? $data->Amount : null;
-        $this->receivedDate      = isset($data->ReceivedDate) ? $data->ReceivedDate : null;
-        $this->capturedAmount    = isset($data->CapturedAmount) ? $data->CapturedAmount : null;
-        $this->capturedDate      = isset($data->CapturedDate) ? $data->CapturedDate : null;
-        $this->voidedAmount      = isset($data->VoidedAmount) ? $data->VoidedAmount : null;
-        $this->voidedDate        = isset($data->VoidedDate) ? $data->VoidedDate : null;
-        $this->currency          = isset($data->Currency) ? $data->Currency : null;
-        $this->country           = isset($data->Country) ? $data->Country : null;
-        $this->returnCode        = isset($data->ReturnCode) ? $data->ReturnCode : null;
-        $this->returnMessage     = isset($data->ReturnMessage) ? $data->ReturnMessage : null;
-        $this->status            = isset($data->Status) ? $data->Status : null;
-
-        $this->links = isset($data->Links) ? $data->Links : [];
-
         $this->assignor       = isset($data->Assignor) ? $data->Assignor : null;
         $this->demonstrative  = isset($data->Demonstrative) ? $data->Demonstrative : null;
         $this->identification = isset($data->Identification) ? $data->Identification : null;
@@ -497,6 +468,36 @@ class Payment implements \JsonSerializable
         $this->reasonMessage   = isset($data->ReasonMessage) ? $data->ReasonMessage : null;
         $this->providerReturnCode   = isset($data->ProviderReturnCode) ? $data->ProviderReturnCode : null;
         $this->providerReturnMessage   = isset($data->ProviderReturnMessage) ? $data->ProviderReturnMessage : null;
+
+        if (isset($data->CreditCard)) {
+            $this->creditCard = new CreditCard();
+            $this->creditCard->populate($data->CreditCard);
+        }
+
+        if (isset($data->DebitCard)) {
+            $this->debitCard = new CreditCard();
+            $this->debitCard->populate($data->DebitCard);
+        }
+
+        $this->recurrent = isset($data->Recurrent) ? !!$data->Recurrent : false;
+        if (isset($data->RecurrentPayment)) {
+            $this->recurrentPayment = new RecurrentPayment(false);
+            $this->recurrentPayment->populate($data->RecurrentPayment);
+        }
+
+        $this->isSplitted = isset($data->IsSplitted) ? !!$data->IsSplitted : false;
+        if (isset($data->SplitPayments)) {
+            foreach ($data->SplitPayments as $splitPayment) {
+                $splittedPayment = new SplitPayment();
+                $splittedPayment->populate($splitPayment);    
+                $this->recurrentPayment[] = $splittedPayment;
+            }      
+        }
+
+        if (isset($data->FraudAnalysis)) {
+            $this->fraudAnalysis = new FraudAnalysis();
+            $this->fraudAnalysis->populate($data->FraudAnalysis);
+        }
 
         if (isset($data->ExternalAuthentication)) {
             $this->externalAuthentication = new ExternalAuthentication();
