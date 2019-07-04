@@ -23,7 +23,7 @@ class VelocityAnalysis implements CieloSerializable
      */
     private $resultMessage;
 
-    /** @var SplitPaymentFares 
+    /** @var integer 
      * 100
      * Tamanho: 10
      */
