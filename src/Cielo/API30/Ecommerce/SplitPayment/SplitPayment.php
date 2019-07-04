@@ -65,11 +65,8 @@ class SplitPayment implements CieloSerializable
         $this->amount = isset($data->Amount) ? $data->Amount : null;
 
         if (isset($data->Fares)) {
-            foreach ($data->Fares as $fare) {
-                $splittedFare = new SplitPaymentFares();
-                $splittedFare->populate($fare);    
-                $this->fares[] = $splittedFare;
-            }
+            $this->fares = new SplitPaymentFares();
+            $this->fares->populate($data->Fares);
         }
     }
 
