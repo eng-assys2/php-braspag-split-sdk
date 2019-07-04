@@ -76,8 +76,11 @@ class VelocityAnalysis implements CieloSerializable
         $this->score = isset($data->Score) ? $data->Score : null;
 
         if (isset($data->RejectReasons)) {
-            $this->rejectReasons = new VelocityAnalysisRejectReasons();
-            $this->rejectReasons->populate($data->RejectReasons);
+            foreach ($data->RejectReasons as $reject_reason) {
+                $velocityRejectReason = new VelocityAnalysisRejectReasons();
+                $velocityRejectReason->populate($reject_reason);    
+                $this->rejectReasons[] = $velocityRejectReason;
+            }
         }
     }
 
