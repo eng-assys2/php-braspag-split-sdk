@@ -3,6 +3,7 @@
 namespace Cielo\API30\Ecommerce;
 
 use Cielo\API30\Ecommerce\SplitPayment\SplitPayment;
+use Cielo\API30\Ecommerce\RecurrentPayment\RecurrentPayment;
 use Cielo\API30\Ecommerce\FraudAnalysis\FraudAnalysis;
 use Cielo\API30\Ecommerce\VelocityAnalysis\VelocityAnalysis;
 
