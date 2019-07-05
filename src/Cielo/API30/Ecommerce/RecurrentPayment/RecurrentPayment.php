@@ -36,21 +36,21 @@ class RecurrentPayment implements \JsonSerializable
     /** @var string|null 
      * Data da próxima recorrência.
      * Tamanho: 7
-     * Formato: 12/2030 (MM/YYYY)
+     * Formato: 2017-06-07 (YYYY/MM/DD)
      */
     private $nextRecurrency;
 
     /** @var string|null 
      * Data do inicio da recorrência.
      * Tamanho: 7
-     * Formato: 12/2030 (MM/YYYY)
+     * Formato: 2017-06-07 (YYYY/MM/DD)
      */
     private $startDate;
 
     /** @var string|null 
      * Data do fim da recorrência.
      * Tamanho: 7
-     * Formato: 12/2030 (MM/YYYY)
+     * Formato: 2017-06-07 (YYYY/MM/DD)
      */
     private $endDate;
 
