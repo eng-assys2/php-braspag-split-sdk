@@ -1,11 +1,11 @@
 <?php
 
-namespace Cielo\API30;
+namespace Braspag;
 
 /**
  * Interface Environment
  *
- * @package Cielo\API30
+ * @package Braspag
  */
 interface Environment
 {
@@ -16,24 +16,4 @@ interface Environment
      */
     public function getApiUrl();
 
-    /**
-     * Gets the environment's Api Query URL
-     *
-     * @return string the Api Query URL
-     */
-    public function getApiQueryURL();
-
-    /**
-     * Gets the environment's Braspag Auth URL
-     *
-     * @return string Braspag Auth URL
-     */
-    public function getbraspagAuthURL();
-
-    /**
-     * Gets the environment's Api Braspag Split URL
-     *
-     * @return string Api Braspag Split URL
-     */
-    public function getapiBraspagSplitURL();
 }
