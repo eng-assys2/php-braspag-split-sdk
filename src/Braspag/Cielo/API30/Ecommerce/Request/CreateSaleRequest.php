@@ -33,7 +33,7 @@ class CreateSaleRequest extends AbstractRequest
      * @param $sale
      *
      * @return null
-     * @throws \Braspag\Request\BraspagRequestException
+     * @throws \Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException
      * @throws \RuntimeException
      */
     public function execute($sale)
