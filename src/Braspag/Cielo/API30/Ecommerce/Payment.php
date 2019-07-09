@@ -4,7 +4,6 @@ namespace Braspag\Cielo\API30\Ecommerce;
 
 use Braspag\Cielo\API30\Ecommerce\SplitPayment\SplitPayment;
 use Braspag\Cielo\API30\Ecommerce\FraudAnalysis\FraudAnalysis;
-use Braspag\Cielo\API30\Ecommerce\VelocityAnalysis\VelocityAnalysis;
 
 /**
  * Class Payment
@@ -14,17 +13,9 @@ use Braspag\Cielo\API30\Ecommerce\VelocityAnalysis\VelocityAnalysis;
 class Payment implements \JsonSerializable
 {
 
-    const PAYMENTTYPE_CREDITCARD = 'CreditCard';
-
     const PAYMENTTYPE_SPLITTEDCREDITCARD = 'SplittedCreditCard';
 
-    const PAYMENTTYPE_DEBITCARD = 'DebitCard';
-
     const PAYMENTTYPE_SPLITTEDDEBITCARD = 'SplittedDebitCard';
-
-    const PAYMENTTYPE_ELECTRONIC_TRANSFER = 'ElectronicTransfer';
-
-    const PAYMENTTYPE_BOLETO = 'Boleto';
 
     const PROVIDER_BRADESCO = 'Bradesco';
 
@@ -208,89 +199,6 @@ class Payment implements \JsonSerializable
      */
     private $extraDataCollection;
 
-    /** @var date|null 
-     * Data de expiração do Boleto. Ex. 2020-12-31
-     * Tamanho: 10
-     * Obs: usado para boletos
-     */
-    private $expirationDate;
-
-    /** @var string|null 
-     * Url do Boleto Gerado
-     * Tamanho: 256
-     * Ex:https://…/pagador/reenvia.asp/8464a692-b4bd-41e7-8003-1611a2b8ef2d
-     * Obs: usado para boletos
-     */
-    private $url;
-
-    /** @var string|null 
-     * "NossoNumero" gerado
-     * Tamanho: 50
-     * Ex: 1000000012-8
-     * Obs: usado para boletos
-     */
-    private $number;
-
-    /** @var string|null 
-     * Número do Boleto enviado pelo lojista. Usado para contar boletos emitidos (“NossoNumero”)
-     * Tamanho: Bradesco 11, Banco do Brasil: 9
-     * Obs: usado para boletos
-     */
-    private $boletoNumber;
-
-    /** @var string|null 
-     * Representação numérica do código de barras
-     * Tamanho: 44
-     * Ex: 00091628800000157000494250100000001200656560
-     * Obs: usado para boletos
-     */
-    private $barCodeNumber;
-
-    /** @var string|null 
-     * Linha digitável
-     * Tamanho: 256
-     * Ex: 00090.49420 50100.000004 12006.565605 1 62880000015700
-     * Obs: usado para boletos
-     */
-    private $digitableLine;
-
-    /** @var string|null 
-     * Endereço do cedente
-     * Tamanho: 255
-     * Obs: usado para boletos
-     */
-    private $address;
-
-    /** @var string|null 
-     * Nome do Cedente
-     * Tamanho: 200
-     * * Obs: usado para boletos
-     */
-    private $assignor;
-
-    /** @var string|null 
-     * Texto de demonstrativo
-     * Tamanho: 255
-     * Obs: usado para boletos
-     */
-    private $demonstrative;
-
-    /** @var string|null 
-     * Documento de identificação do cedente
-     * Tamanho: 14
-     * CPF ou CNPJ do Cedente sem os caracteres especiais (., /, -)
-     * Obs: usado para boletos
-     */
-    private $identification;
-
-    /** @var string|null 
-     * Instruções do Boleto
-     * Tamanho: 255
-     * Ex: Aceitar somente até a data de vencimento, após essa data juros de 1% dia
-     * Obs: usado para boletos
-     */
-    private $instructions;
-
     /** @var boolean|null 
      * Indica que a transação utilizou QRCode
      */
@@ -360,25 +268,6 @@ class Payment implements \JsonSerializable
      */
     private $fraudAnalysis;
 
-    /** @var ExternalAuthentication|null 
-     * Instância da classe de autenticação externa
-     * O processo de autenticação possibilita realizar uma venda (crédito ou débito) 
-     * a qual passará pelo processo de autenticação do banco emissor do cartão, 
-     * assim trazendo mais segurança para a venda e transferindo para o banco, o risco de fraude. 
-     * Este processo de autenticação pode ser feito junto ou separado da autorização, 
-     * e para os casos onde o estabelecimento opta por realizar a autenticação em um provedor
-     * externo (de sua escolha).
-     */
-    private $externalAuthentication;
-
-    /** @var VelocityAnalysis|null 
-     * O Velocity é um tipo de mecanismo de prevenção à tentativas de fraude, que analisa 
-     * especificamente o conceito de “velocidade X dados transacionais”. 
-     * Ela analisa a frequência que determinados dados são utilizados e se esse dados estão 
-     * inscritos em uma lista de comportamentos passiveis de ações de segurança.
-     */
-    private $velocityAnalysis;
-
     /**
      * Payment constructor.
      *
@@ -437,17 +326,6 @@ class Payment implements \JsonSerializable
 
         $this->links = isset($data->Links) ? $data->Links : [];
         $this->extraDataCollection = isset($data->ExtraDataCollection) ? $data->ExtraDataCollection : [];
-        
-        $this->expirationDate = isset($data->ExpirationDate) ? $data->ExpirationDate : null;
-        $this->url = isset($data->Url) ? $data->Url : null;
-        $this->boletoNumber = isset($data->BoletoNumber) ? $data->BoletoNumber : null;
-        $this->barCodeNumber = isset($data->BarCodeNumber) ? $data->BarCodeNumber : null;
-        $this->digitableLine = isset($data->DigitableLine) ? $data->DigitableLine : null;
-        $this->address = isset($data->Address) ? $data->Address : null;
-        $this->assignor = isset($data->Assignor) ? $data->Assignor : null;
-        $this->demonstrative = isset($data->Demonstrative) ? $data->Demonstrative : null;
-        $this->identification = isset($data->Identification) ? $data->Identification : null;
-        $this->instructions = isset($data->Instructions) ? $data->Instructions : null;
 
         $this->isQrCode = isset($data->IsQrCode) ? $data->IsQrCode : null;
         $this->qrCodeBase64Image = isset($data->QrCodeBase64Image) ? $data->QrCodeBase64Image : null;
@@ -479,16 +357,6 @@ class Payment implements \JsonSerializable
         if (isset($data->FraudAnalysis)) {
             $this->fraudAnalysis = new FraudAnalysis();
             $this->fraudAnalysis->populate($data->FraudAnalysis);
-        }
-
-        if (isset($data->ExternalAuthentication)) {
-            $this->externalAuthentication = new ExternalAuthentication();
-            $this->externalAuthentication->populate($data->ExternalAuthentication);
-        }
-
-        if (isset($data->VelocityAnalysis)) {
-            $this->velocityAnalysis = new VelocityAnalysis();
-            $this->velocityAnalysis->populate($data->VelocityAnalysis);
         }
     }
 
@@ -1162,226 +1030,6 @@ class Payment implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getExpirationDate()
-    {
-        return $this->expirationDate;
-    }
-
-    /**
-     * @param $expirationDate
-     *
-     * @return $this
-     */
-    public function setExpirationDate($expirationDate)
-    {
-        $this->expirationDate = $expirationDate;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * @param $url
-     *
-     * @return $this
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumber()
-    {
-        return $this->number;
-    }
-
-    /**
-     * @param $number
-     *
-     * @return $this
-     */
-    public function setNumber($number)
-    {
-        $this->number = $number;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBoletoNumber()
-    {
-        return $this->boletoNumber;
-    }
-
-    /**
-     * @param $boletoNumber
-     *
-     * @return $this
-     */
-    public function setBoletoNumber($boletoNumber)
-    {
-        $this->boletoNumber = $boletoNumber;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBarCodeNumber()
-    {
-        return $this->barCodeNumber;
-    }
-
-    /**
-     * @param $barCodeNumber
-     *
-     * @return $this
-     */
-    public function setBarCodeNumber($barCodeNumber)
-    {
-        $this->barCodeNumber = $barCodeNumber;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDigitableLine()
-    {
-        return $this->digitableLine;
-    }
-
-    /**
-     * @param $digitableLine
-     *
-     * @return $this
-     */
-    public function setDigitableLine($digitableLine)
-    {
-        $this->digitableLine = $digitableLine;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param $address
-     *
-     * @return $this
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssignor()
-    {
-        return $this->assignor;
-    }
-
-    /**
-     * @param $assignor
-     *
-     * @return $this
-     */
-    public function setAssignor($assignor)
-    {
-        $this->assignor = $assignor;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDemonstrative()
-    {
-        return $this->demonstrative;
-    }
-
-    /**
-     * @param $demonstrative
-     *
-     * @return $this
-     */
-    public function setDemonstrative($demonstrative)
-    {
-        $this->demonstrative = $demonstrative;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdentification()
-    {
-        return $this->identification;
-    }
-
-    /**
-     * @param $identification
-     *
-     * @return $this
-     */
-    public function setIdentification($identification)
-    {
-        $this->identification = $identification;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInstructions()
-    {
-        return $this->instructions;
-    }
-
-    /**
-     * @param $instructions
-     *
-     * @return $this
-     */
-    public function setInstructions($instructions)
-    {
-        $this->instructions = $instructions;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getSplitPayments()
     {
         return $this->splitPayments;
@@ -1581,46 +1229,6 @@ class Payment implements \JsonSerializable
     public function setProviderReturnMessage($providerReturnMessage)
     {
         $this->providerReturnMessage = $providerReturnMessage;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getExternalAuthentication()
-    {
-        return $this->externalAuthentication;
-    }
-
-    /**
-     * @param $externalAuthentication
-     *
-     * @return $this
-     */
-    public function setExternalAuthentication($externalAuthentication)
-    {
-        $this->externalAuthentication = $externalAuthentication;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getVelocityAnalysis()
-    {
-        return $this->velocityAnalysis;
-    }
-
-    /**
-     * @param $velocityAnalysis
-     *
-     * @return $this
-     */
-    public function setVelocityAnalysis($velocityAnalysis)
-    {
-        $this->velocityAnalysis = $velocityAnalysis;
 
         return $this;
     }
