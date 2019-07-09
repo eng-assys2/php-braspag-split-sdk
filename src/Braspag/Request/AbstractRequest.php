@@ -46,7 +46,7 @@ abstract class AbstractRequest
         $headers = [
             'Accept: application/json',
             'Accept-Encoding: gzip',
-            'User-Agent: CieloEcommerce/3.0 PHP SDK',
+            'User-Agent: Gerenciagram Braspag API PHP SDK',
             "Authorization: Bearer {$this->merchant->getToken()}",
             'RequestId: ' . uniqid()
         ];
