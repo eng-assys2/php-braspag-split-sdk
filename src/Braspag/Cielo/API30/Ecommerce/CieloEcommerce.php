@@ -31,7 +31,7 @@ class CieloEcommerce
     public function __construct(Merchant $merchant, Environment $environment = null)
     {
         if ($environment == null) {
-            $environment = Environment::production();
+            $environment = Environment::sandbox();
         }
 
         $this->merchant    = $merchant;
