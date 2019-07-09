@@ -51,7 +51,7 @@ composer require "developercielo/api-3.0-php"
 <?php
 require 'vendor/autoload.php';
 
-use Cielo\API30\Ecommerce\CreditCard;
+use Braspag\Cielo\API30\Ecommerce\CreditCard;
 ```
 
 | Bandeira         | Constante              | Crédito à vista | Crédito parcelado Loja | Débito | Voucher |
@@ -75,15 +75,15 @@ Para criar um pagamento simples com cartão de crédito com o SDK, basta fazer:
 <?php
 require 'vendor/autoload.php';
 
-use Cielo\API30\Merchant;
+use Braspag\Merchant;
 
-use Cielo\API30\Ecommerce\Environment;
-use Cielo\API30\Ecommerce\Sale;
-use Cielo\API30\Ecommerce\CieloEcommerce;
-use Cielo\API30\Ecommerce\Payment;
-use Cielo\API30\Ecommerce\CreditCard;
+use Braspag\Cielo\API30\Ecommerce\Environment;
+use Braspag\Cielo\API30\Ecommerce\Sale;
+use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
+use Braspag\Cielo\API30\Ecommerce\Payment;
+use Braspag\Cielo\API30\Ecommerce\CreditCard;
 
-use Cielo\API30\Ecommerce\Request\CieloRequestException;
+use Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException;
 // ...
 // Configure o ambiente
 $environment = $environment = Environment::sandbox();
@@ -136,15 +136,15 @@ try {
 <?php
 require 'vendor/autoload.php';
 
-use Cielo\API30\Merchant;
+use Braspag\Merchant;
 
-use Cielo\API30\Ecommerce\Environment;
-use Cielo\API30\Ecommerce\Sale;
-use Cielo\API30\Ecommerce\CieloEcommerce;
-use Cielo\API30\Ecommerce\Payment;
-use Cielo\API30\Ecommerce\CreditCard;
+use Braspag\Cielo\API30\Ecommerce\Environment;
+use Braspag\Cielo\API30\Ecommerce\Sale;
+use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
+use Braspag\Cielo\API30\Ecommerce\Payment;
+use Braspag\Cielo\API30\Ecommerce\CreditCard;
 
-use Cielo\API30\Ecommerce\Request\CieloRequestException;
+use Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException;
 // ...
 // Configure o ambiente
 $environment = $environment = Environment::sandbox();
@@ -192,15 +192,15 @@ try {
 <?php
 require 'vendor/autoload.php';
 
-use Cielo\API30\Merchant;
+use Braspag\Merchant;
 
-use Cielo\API30\Ecommerce\Environment;
-use Cielo\API30\Ecommerce\Sale;
-use Cielo\API30\Ecommerce\CieloEcommerce;
-use Cielo\API30\Ecommerce\Payment;
-use Cielo\API30\Ecommerce\CreditCard;
+use Braspag\Cielo\API30\Ecommerce\Environment;
+use Braspag\Cielo\API30\Ecommerce\Sale;
+use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
+use Braspag\Cielo\API30\Ecommerce\Payment;
+use Braspag\Cielo\API30\Ecommerce\CreditCard;
 
-use Cielo\API30\Ecommerce\Request\CieloRequestException;
+use Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException;
 // ...
 // Configure o ambiente
 $environment = $environment = Environment::sandbox();
@@ -245,15 +245,15 @@ try {
 <?php
 require 'vendor/autoload.php';
 
-use Cielo\API30\Merchant;
+use Braspag\Merchant;
 
-use Cielo\API30\Ecommerce\Environment;
-use Cielo\API30\Ecommerce\Sale;
-use Cielo\API30\Ecommerce\CieloEcommerce;
-use Cielo\API30\Ecommerce\Payment;
-use Cielo\API30\Ecommerce\CreditCard;
+use Braspag\Cielo\API30\Ecommerce\Environment;
+use Braspag\Cielo\API30\Ecommerce\Sale;
+use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
+use Braspag\Cielo\API30\Ecommerce\Payment;
+use Braspag\Cielo\API30\Ecommerce\CreditCard;
 
-use Cielo\API30\Ecommerce\Request\CieloRequestException;
+use Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException;
 // ...
 // ...
 // Configure o ambiente
@@ -302,14 +302,14 @@ try {
 <?php
 require 'vendor/autoload.php';
 
-use Cielo\API30\Merchant;
+use Braspag\Merchant;
 
-use Cielo\API30\Ecommerce\Environment;
-use Cielo\API30\Ecommerce\Sale;
-use Cielo\API30\Ecommerce\CieloEcommerce;
-use Cielo\API30\Ecommerce\CreditCard;
+use Braspag\Cielo\API30\Ecommerce\Environment;
+use Braspag\Cielo\API30\Ecommerce\Sale;
+use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
+use Braspag\Cielo\API30\Ecommerce\CreditCard;
 
-use Cielo\API30\Ecommerce\Request\CieloRequestException;
+use Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException;
 
 // ...
 // Configure o ambiente
@@ -364,14 +364,14 @@ try {
 <?php
 require 'vendor/autoload.php';
 
-use Cielo\API30\Merchant;
+use Braspag\Merchant;
 
-use Cielo\API30\Ecommerce\Environment;
-use Cielo\API30\Ecommerce\Sale;
-use Cielo\API30\Ecommerce\CieloEcommerce;
-use Cielo\API30\Ecommerce\Payment;
+use Braspag\Cielo\API30\Ecommerce\Environment;
+use Braspag\Cielo\API30\Ecommerce\Sale;
+use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
+use Braspag\Cielo\API30\Ecommerce\Payment;
 
-use Cielo\API30\Ecommerce\Request\CieloRequestException;
+use Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException;
 // ...
 // Configure o ambiente
 $environment = $environment = Environment::sandbox();
@@ -431,13 +431,13 @@ try {
 
 require 'vendor/autoload.php';
 
-use Cielo\API30\Merchant;
+use Braspag\Merchant;
 
-use Cielo\API30\Ecommerce\Environment;
-use Cielo\API30\Ecommerce\CreditCard;
-use Cielo\API30\Ecommerce\CieloEcommerce;
+use Braspag\Cielo\API30\Ecommerce\Environment;
+use Braspag\Cielo\API30\Ecommerce\CreditCard;
+use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
 
-use Cielo\API30\Ecommerce\Request\CieloRequestException;
+use Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException;
 
 // ...
 // ...

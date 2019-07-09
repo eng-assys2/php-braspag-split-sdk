@@ -1,11 +1,11 @@
 {
   "autoload": {
     "psr-0": {
-      "Cielo": "src"
+      "Braspag": "src"
     }
   },
-  "name": "gerenciagram/cielo-braspag-api-3.0-php",
-  "description": "Integração com a API 3.0 da Cielo com adição do Split de Pagamentos da Braspag",
+  "name": "gerenciagram/braspag-split-api-php",
+  "description": "SDK em PHP para Integração com API de SPLIT de Pagamentos da Braspag",
   "license": "MIT",
   "type": "library",
   "require": {
