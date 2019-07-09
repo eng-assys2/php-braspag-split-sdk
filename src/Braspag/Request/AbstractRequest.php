@@ -41,15 +41,16 @@ abstract class AbstractRequest
      * @throws \Braspag\Request\BraspagRequestException
      * @throws \RuntimeException
      */
-    protected function sendRequest($method, $url, \JsonSerializable $content = null)
+    protected function sendRequest($method, $url, \JsonSerializable $content = null, $headers = [])
     {
-        $headers = [
+
+        $headers = empty ( $headers ) ?[
             'Accept: application/json',
             'Accept-Encoding: gzip',
             'User-Agent: Gerenciagram Braspag API PHP SDK',
             "Authorization: Bearer {$this->merchant->getToken()}",
             'RequestId: ' . uniqid()
-        ];
+        ] : $headers;
 
         $curl = curl_init($url);
 
