@@ -47,7 +47,7 @@ class CieloEcommerce
      *
      * @return Sale The Sale with authorization, tid, etc. returned by Cielo.
      *
-     * @throws \Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException if anything gets wrong.
+     * @throws \Braspag\Request\BraspagRequestException if anything gets wrong.
      *
      * @see <a href=
      *      "https://developercielo.github.io/Webservice-3.0/english.html#error-codes">Error
@@ -68,7 +68,7 @@ class CieloEcommerce
      *
      * @return Sale The Sale with authorization, tid, etc. returned by Cielo.
      *
-     * @throws \Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException if anything gets wrong.
+     * @throws \Braspag\Request\BraspagRequestException if anything gets wrong.
      *
      * @see <a href=
      *      "https://developercielo.github.io/Webservice-3.0/english.html#error-codes">Error
@@ -91,7 +91,7 @@ class CieloEcommerce
      *
      * @return Sale The Sale with authorization, tid, etc. returned by Cielo.
      *
-     * @throws \Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException if anything gets wrong.
+     * @throws \Braspag\Request\BraspagRequestException if anything gets wrong.
      *
      * @see <a href=
      *      "https://developercielo.github.io/Webservice-3.0/english.html#error-codes">Error
@@ -121,7 +121,7 @@ class CieloEcommerce
      * @return \Braspag\Cielo\API30\Ecommerce\Payment The captured Payment.
      *
      *
-     * @throws \Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException if anything gets wrong.
+     * @throws \Braspag\Request\BraspagRequestException if anything gets wrong.
      *
      * @see <a href=
      *      "https://developercielo.github.io/Webservice-3.0/english.html#error-codes">Error
