@@ -28,6 +28,7 @@ class Environment implements \Braspag\Environment
     public static function sandbox()
     {
         $api = 'https://authsandbox.braspag.com.br/';
+
         return new Environment($api);
     }
 
@@ -37,6 +38,7 @@ class Environment implements \Braspag\Environment
     public static function production()
     {
         $api = 'https://auth.braspag.com.br/';
+        
         return new Environment($api);
     }
 
