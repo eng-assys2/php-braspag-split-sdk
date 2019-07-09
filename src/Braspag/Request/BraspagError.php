@@ -3,11 +3,11 @@
 namespace Braspag\Request;
 
 /**
- * Class CieloError
+ * Class BraspagError
  *
  * @package Braspag\Request
  */
-class CieloError
+class BraspagError
 {
 
     private $code;
@@ -15,7 +15,7 @@ class CieloError
     private $message;
 
     /**
-     * CieloError constructor.
+     * BraspagError constructor.
      *
      * @param $message
      * @param $code

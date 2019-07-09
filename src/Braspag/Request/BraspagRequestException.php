@@ -10,7 +10,7 @@ namespace Braspag\Request;
 class BraspagRequestException extends \Exception
 {
 
-    private $cieloError;
+    private $braspagError;
 
     /**
      * BraspagRequestException constructor.
@@ -27,19 +27,19 @@ class BraspagRequestException extends \Exception
     /**
      * @return mixed
      */
-    public function getCieloError()
+    public function getBraspagError()
     {
-        return $this->cieloError;
+        return $this->braspagError;
     }
 
     /**
-     * @param CieloError $cieloError
+     * @param BraspagError $braspagError
      *
      * @return $this
      */
-    public function setCieloError(CieloError $cieloError)
+    public function setBraspagError(BraspagError $braspagError)
     {
-        $this->cieloError = $cieloError;
+        $this->braspagError = $braspagError;
 
         return $this;
     }

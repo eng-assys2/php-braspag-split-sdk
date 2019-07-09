@@ -111,9 +111,9 @@ abstract class AbstractRequest
                 $response  = json_decode($responseBody);
 
                 foreach ($response as $error) {
-                    $cieloError = new CieloError($error->Message, $error->Code);
+                    $braspagError = new BraspagError($error->Message, $error->Code);
                     $exception  = new BraspagRequestException('Request Error', $statusCode, $exception);
-                    $exception->setCieloError($cieloError);
+                    $exception->setBraspagError($braspagError);
                 }
 
                 throw $exception;
