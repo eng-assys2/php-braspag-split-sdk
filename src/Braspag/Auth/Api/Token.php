@@ -29,13 +29,13 @@ class Token implements \JsonSerializable
     /**
      * @param $json
      *
-     * @return Auth
+     * @return Token
      */
     public static function fromJson($json)
     {
         $object = json_decode($json);
 
-        $auth = new Auth();
+        $auth = new Token();
         $auth->populate($object);
 
         return $auth;

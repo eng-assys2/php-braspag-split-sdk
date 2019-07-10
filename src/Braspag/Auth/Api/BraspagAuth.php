@@ -2,10 +2,7 @@
 
 namespace Braspag\Auth\API;
 
-use Braspag\Merchant;
-
-use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Exception\ConnectException;
+use Braspag\Auth\Api\Request\QueryAccessTokenRequest;
 
 /**
  * The Braspag Auth SDK front-end;
@@ -13,18 +10,12 @@ use GuzzleHttp\Exception\ConnectException;
 class BraspagAuth
 {
 
-    private $merchant;
-
     private $environment;
 
     /**
      * Create an instance of BraspagAuth choosing the environment where the
      * requests will be send
-     *
-     * @param $id
-     *      The MerchantId
-     * @param $key
-     *      The MerchantKey
+     *     
      * @param Environment environment
      *            The environment: {@link Environment::production()} or
      *            {@link Environment::sandbox()}
@@ -50,32 +41,9 @@ class BraspagAuth
      */
     public function createAuthToken($auth)
     {
-        $url = $this->environment->getApiUrl() . 'oauth2/token';
-        $guzzleClient = new GuzzleClient();
+        
+        $queryAccessTokenRequest = new QueryAccessTokenRequest($this->environment);
 
-        try {
-            $response = $guzzleClient->post($url,
-                [
-                    'http_errors' => false,
-                    'auth' => [
-                        $auth->getId(),
-                        $auth->getKey()
-                    ],
-                    'headers' => [
-                        'Accept: application/json',
-                        'User-Agent: CieloEcommerce/3.0 PHP SDK'
-                    ],
-                    'form_params' => [
-                        'grant_type' => 'client_credentials'
-                    ]
-                ]
-            );
-
-            return Token::fromJson($response->getBody()->getContents());
-
-        } catch (ConnectException $ex) {
-            return null;
-        }
-
+        return $queryAccessTokenRequest->execute($auth);
     }
 }
