@@ -2,7 +2,7 @@
 
 namespace Braspag\Auth\Api\Request;
 
-use Braspag\Request\Request;
+use Braspag\Request\AbstractRequest;
 
 use Braspag\Auth\API\Auth;
 use Braspag\Auth\API\Token;
@@ -13,7 +13,7 @@ use Braspag\Auth\API\Environment;
  *
  * @package Braspag\Auth\Api\Request
  */
-class QueryAccessTokenRequest extends Request
+class QueryAccessTokenRequest extends AbstractRequest
 {
 
     private $environment;
@@ -45,16 +45,25 @@ class QueryAccessTokenRequest extends Request
 
         $headers = [
             'Accept: application/json',
-            'User-Agent: CieloEcommerce/3.0 PHP SDK'
+            'User-Agent: Gerenciagram Braspag API PHP SDK',
         ];
 
         $form_params = [
             'grant_type' => 'client_credentials'
         ];
 
-        $response = $this->post($url, [], $headers, [], $auth_request, $form_params);
+        return $this->post($url, [], $headers, [], $auth_request, $form_params);
         
-        return Token::fromJson($response['json']);
+    }
+
+    /**
+     * @param $json
+     *
+     * @return Token
+     */
+    protected function unserialize($json)
+    {
+        return Token::fromJson($json);
     }
 
 }
