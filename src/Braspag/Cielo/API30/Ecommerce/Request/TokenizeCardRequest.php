@@ -6,6 +6,8 @@ use Braspag\Cielo\API30\Ecommerce\CreditCard;
 use Braspag\Cielo\API30\Ecommerce\Environment;
 use Braspag\Merchant;
 
+use Braspag\Request\AbstractRequest;
+
 /**
  * Class CreateCardTokenRequestHandler
  *

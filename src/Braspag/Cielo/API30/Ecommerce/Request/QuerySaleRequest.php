@@ -6,6 +6,8 @@ use Braspag\Cielo\API30\Ecommerce\Sale;
 use Braspag\Environment;
 use Braspag\Merchant;
 
+use Braspag\Request\AbstractRequest;
+
 /**
  * Class QuerySaleRequest
  *
@@ -33,7 +35,7 @@ class QuerySaleRequest extends AbstractRequest
      * @param $paymentId
      *
      * @return null
-     * @throws \Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException
+     * @throws \Braspag\Request\BraspagRequestException
      * @throws \RuntimeException
      */
     public function execute($paymentId)
