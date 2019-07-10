@@ -8,13 +8,13 @@ use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
 use Braspag\Cielo\API30\Ecommerce\Payment;
 use Braspag\Cielo\API30\Ecommerce\CreditCard;
 
-use Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException;
+use Braspag\Request\BraspagRequestException;
 // ...
 // Configure o ambiente
 $environment = Environment::sandbox();
 
 // Configure seu merchant
-$accessToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRfbmFtZSI6ImdlcmVuY2lhZ3JhbSIsImNsaWVudF9pZCI6ImU1ODYxYTAwLTVlZDItNDkyOC1iNzNiLWEzN2M4OWFhOTM3MCIsInNjb3BlcyI6WyJ7XCJTY29wZVwiOlwiU3BsaXRNYXN0ZXJcIixcIkNsYWltc1wiOltdfSIsIntcIlNjb3BlXCI6XCJDaWVsb0FwaVwiLFwiQ2xhaW1zXCI6W119Il0sInJvbGUiOlsiU3BsaXRNYXN0ZXIiLCJDaWVsb0FwaSJdLCJpc3MiOiJodHRwczovL2F1dGhzYW5kYm94LmJyYXNwYWcuY29tLmJyIiwiYXVkIjoiVVZReGNVQTJjU0oxZmtRM0lVRW5PaUkzZG05dGZtbDVlbEI1SlVVdVFXZz0iLCJleHAiOjE1NjI3ODgyOTMsIm5iZiI6MTU2MjcwMTg5M30.HIs0g4xv7xJDzTP6Igoi89W-6NPYb3fCAV8bL6_C9Hc';
+$accessToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRfbmFtZSI6ImdlcmVuY2lhZ3JhbSIsImNsaWVudF9pZCI6ImU1ODYxYTAwLTVlZDItNDkyOC1iNzNiLWEzN2M4OWFhOTM3MCIsInNjb3BlcyI6WyJ7XCJTY29wZVwiOlwiU3BsaXRNYXN0ZXJcIixcIkNsYWltc1wiOltdfSIsIntcIlNjb3BlXCI6XCJDaWVsb0FwaVwiLFwiQ2xhaW1zXCI6W119Il0sInJvbGUiOlsiU3BsaXRNYXN0ZXIiLCJDaWVsb0FwaSJdLCJpc3MiOiJodHRwczovL2F1dGhzYW5kYm94LmJyYXNwYWcuY29tLmJyIiwiYXVkIjoiVVZReGNVQTJjU0oxZmtRM0lVRW5PaUkzZG05dGZtbDVlbEI1SlVVdVFXZz0iLCJleHAiOjE1NjI4MTQwNzMsIm5iZiI6MTU2MjcyNzY3M30.UW6q8A2NyPLniuPtR6se4rarW2FS8pKlV60Uu8LJqxM';
 $merchant = new Merchant($accessToken);
 
 // Crie uma instância de Sale informando o ID do pedido na loja
@@ -104,13 +104,13 @@ try {
     // Com o ID do Pagamento, conseguimos cancelar o mesmo.
     $cancelled_payment = $cielo_ecommerce->cancelSale($paymentId);
 
-    var_dump($cancelled_payment->jsonSerialize());
+    print_r($cancelled_payment->jsonSerialize());
 
     // // E também podemos fazer seu cancelamento, se for o caso
     // $sale = (new CieloEcommerce($merchant, $environment))->cancelSale($paymentId, 15700);
-} catch (CieloRequestException $e) {
+} catch (BraspagRequestException $e) {
     // Em caso de erros de integração, podemos tratar o erro aqui.
     // os códigos de erro estão todos disponíveis no manual de integração.
     $error = $e->getCieloError();
-    var_dump($e);
+    print_r($e);
 }

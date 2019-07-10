@@ -8,7 +8,7 @@ use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
 use Braspag\Cielo\API30\Ecommerce\Payment;
 use Braspag\Cielo\API30\Ecommerce\CreditCard;
 
-use Braspag\Cielo\API30\Ecommerce\Request\CieloRequestException;
+use Braspag\Request\BraspagRequestException;
 // ...
 // Configure o ambiente
 $environment = Environment::sandbox();
@@ -104,13 +104,13 @@ try {
     // de autenticação do emissor do cartão
     $authenticationUrl = $sale->getPayment()->getAuthenticationUrl();
 
-    var_dump($authenticationUrl);
+    print_r($authenticationUrl);
 
     // // E também podemos fazer seu cancelamento, se for o caso
     // $sale = (new CieloEcommerce($merchant, $environment))->cancelSale($paymentId, 15700);
-} catch (CieloRequestException $e) {
+} catch (BraspagRequestException $e) {
     // Em caso de erros de integração, podemos tratar o erro aqui.
     // os códigos de erro estão todos disponíveis no manual de integração.
     $error = $e->getCieloError();
-    var_dump($e);
+    print_r($e);
 }
