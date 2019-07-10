@@ -2,6 +2,8 @@
 
 namespace Braspag\Split\Api\Request;
 
+use Braspag\Merchant;
+
 use Braspag\Request\AbstractRequest;
 
 use Braspag\Split\API\Environment;
@@ -20,18 +22,21 @@ class SchedulerAdjustmentRequest extends AbstractRequest
     /**
      * SchedulerAdjustmentRequest constructor.
      *
+     * @param Merchant    $merchant
      * @param Environment $environment
      */
-    public function __construct(Environment $environment)
+    public function __construct(Merchant $merchant, Environment $environment)
     {
+        parent::__construct($merchant);
+
         $this->environment = $environment;
     }
 
     /**
-     * @param $paymentId
+     * @param $schedulerAdjustment
      *
-     * @return Braspag\Auth\API\SchedulerAdjustment
-     * @throws \GuzzleHttp\Exception\ConnectException
+     * @return null
+     * @throws \Braspag\API\Request\BraspagRequestException
      */
     public function execute($schedulerAdjustment)
     {
