@@ -44,7 +44,7 @@ abstract class AbstractRequest {
                 'Accept: application/json',
                 'Accept-Encoding: gzip',
                 'User-Agent: Gerenciagram Braspag API PHP SDK',
-                "Authorization: Bearer {$this->merchant->getToken()}",
+                'Authorization' => "Bearer {$this->merchant->getToken()}",
                 'RequestId: ' . uniqid()
             ];
         }
