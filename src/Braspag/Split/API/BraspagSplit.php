@@ -5,6 +5,7 @@ namespace Braspag\Split\Api;
 use Braspag\Split\API\Request\QuerySchedulerEventsRequest;
 use Braspag\Split\API\Request\QuerySchedulerTransactionsRequest;
 use Braspag\Split\API\Request\SchedulerAdjustmentRequest;
+use Braspag\Split\API\Request\HandleChargebackRequest;
 
 use Braspag\Merchant;
 
@@ -92,6 +93,28 @@ class BraspagSplit
         $updateSaleRequest = new SchedulerAdjustmentRequest($this->merchant, $this->environment);
 
         return $updateSaleRequest->execute($paymentId);
+    }
+
+    // /**
+    //  * Handles With Chargebacks
+    //  *
+    //  * @param string  $chargebackId
+    //  *            The chargebackId to be handled
+    //  * @param integer $chargeback
+    //  *            The information to hadle the chargeback
+    //  *
+    //  * @return Chargeback 
+    //  *
+    //  * @throws \Braspag\API\Request\BraspagRequestException if anything gets wrong.
+    //  *
+    //  */
+    public function handleChargeback($chargebackId, $chargeback)
+    {
+        $handleChargebackRequest = new HandleChargebackRequest($this->merchant, $this->environment);
+
+        $handleChargebackRequest->setChargebackId($chargebackId);
+
+        return $handleChargebackRequest->execute($chargeback);
     }
 
 }
