@@ -28,7 +28,7 @@ class Environment implements \Braspag\Environment
     {
         $api = 'https://splitonboardingsandbox.braspag.com.br/';
 
-        return new Environment($api, $apiQuery, $braspagAuth, $apiBraspagSplit);
+        return new Environment($api);
     }
 
     /**
@@ -38,7 +38,7 @@ class Environment implements \Braspag\Environment
     {
         $api = 'https://splitonboarding.braspag.com.br/';
 
-        return new Environment($api, $apiQuery, $braspagAuth, $apiBraspagSplit);
+        return new Environment($api);
     }
 
     /**
@@ -51,31 +51,4 @@ class Environment implements \Braspag\Environment
         return $this->api;
     }
 
-    /**
-     * Gets the environment's Api Query URL
-     *
-     * @return string Api Query URL
-     */
-    public function getApiQueryURL()
-    {
-        return $this->apiQuery;
-    }
-
-    /**
-     * Gets the environment's Braspag Auth URL
-     *
-     * @return string Braspag Auth URL
-     */
-    public function getbraspagAuthURL(){
-        return $this->braspagAuth;
-    }
-
-    /**
-     * Gets the environment's Api Braspag Split URL
-     *
-     * @return string Api Braspag Split URL
-     */
-    public function getapiBraspagSplitURL(){
-        return $this->apiBraspagSplit;
-    }
 }
