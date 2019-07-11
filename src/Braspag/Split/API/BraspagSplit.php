@@ -75,19 +75,19 @@ class BraspagSplit
         return $querySchedulerTransactionsRequest->execute($schedulerQuery);
     }
 
-    // /**
-    //  * Schedules adjustments in Split Scheduler specifying the amount
-    //  *
-    //  * @param string  $paymentId
-    //  *            The paymentId to be queried
-    //  * @param integer $amount
-    //  *            Order value in cents
-    //  *
-    //  * @return SchedulerAdjustment The Adjustment in Scheduler
-    //  *
-    //  * @throws \Braspag\API\Request\BraspagRequestException if anything gets wrong.
-    //  *
-    //  */
+    /**
+     * Schedules adjustments in Split Scheduler specifying the amount
+     *
+     * @param string  $paymentId
+     *            The paymentId to be queried
+     * @param integer $amount
+     *            Order value in cents
+     *
+     * @return SchedulerAdjustment The Adjustment in Scheduler
+     *
+     * @throws \Braspag\API\Request\BraspagRequestException if anything gets wrong.
+     *
+     */
     public function schedulerAdjustment($paymentId)
     {
         $updateSaleRequest = new SchedulerAdjustmentRequest($this->merchant, $this->environment);
@@ -95,19 +95,19 @@ class BraspagSplit
         return $updateSaleRequest->execute($paymentId);
     }
 
-    // /**
-    //  * Handles With Chargebacks
-    //  *
-    //  * @param string  $chargebackId
-    //  *            The chargebackId to be handled
-    //  * @param integer $chargeback
-    //  *            The information to hadle the chargeback
-    //  *
-    //  * @return Chargeback 
-    //  *
-    //  * @throws \Braspag\API\Request\BraspagRequestException if anything gets wrong.
-    //  *
-    //  */
+    /**
+     * Handles With Chargebacks
+     *
+     * @param string  $chargebackId
+     *            The chargebackId to be handled
+     * @param integer $chargeback
+     *            The information to hadle the chargeback
+     *
+     * @return Chargeback 
+     *
+     * @throws \Braspag\API\Request\BraspagRequestException if anything gets wrong.
+     *
+     */
     public function handleChargeback($chargebackId, $chargeback)
     {
         $handleChargebackRequest = new HandleChargebackRequest($this->merchant, $this->environment);
