@@ -75,25 +75,23 @@ class BraspagSplit
     }
 
     // /**
-    //  * Cancel a Sale on Cielo by paymentId and speficying the amount
+    //  * Schedules adjustments in Split Scheduler specifying the amount
     //  *
     //  * @param string  $paymentId
     //  *            The paymentId to be queried
     //  * @param integer $amount
     //  *            Order value in cents
     //  *
-    //  * @return Sale The Sale with authorization, tid, etc. returned by Cielo.
+    //  * @return SchedulerAdjustment The Adjustment in Scheduler
     //  *
     //  * @throws \Braspag\API\Request\BraspagRequestException if anything gets wrong.
     //  *
     //  */
-    // public function schedulerAdjustment($paymentId, $amount = null)
-    // {
-    //     $updateSaleRequest = new SchedulerAdjustmentRequest('void', $this->merchant, $this->environment);
+    public function schedulerAdjustment($paymentId)
+    {
+        $updateSaleRequest = new SchedulerAdjustmentRequest($this->merchant, $this->environment);
 
-    //     $updateSaleRequest->setAmount($amount);
-
-    //     return $updateSaleRequest->execute($paymentId);
-    // }
+        return $updateSaleRequest->execute($paymentId);
+    }
 
 }
