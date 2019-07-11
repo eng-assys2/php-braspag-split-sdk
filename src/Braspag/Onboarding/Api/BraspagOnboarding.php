@@ -2,8 +2,8 @@
 
 namespace Braspag\Onboarding\Api;
 
-use Braspag\Onboarding\API\Request\CreateSubordinateMerchantRequest;
-use Braspag\Onboarding\API\Request\QuerySubordinateMerchantRequest;
+use Braspag\Onboarding\Api\Request\CreateSubordinateMerchantRequest;
+use Braspag\Onboarding\Api\Request\QuerySubordinateMerchantRequest;
 
 use Braspag\Merchant;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Braspag\Onboarding\API;
+namespace Braspag\Onboarding\Api;
 
 /**
  * Class Environment
  *
- * @package Braspag\Onboarding\API
+ * @package Braspag\Onboarding\Api
  */
 class Environment implements \Braspag\Environment
 {
