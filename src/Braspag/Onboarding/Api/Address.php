@@ -7,7 +7,7 @@ namespace Braspag\Onboarding\API;
  *
  * @package Braspag\Onboarding\API
  */
-class SubordinateAddress implements \JsonSerializable
+class Address implements \JsonSerializable
 {
     private $street;
 
@@ -26,13 +26,13 @@ class SubordinateAddress implements \JsonSerializable
     /**
      * @param $json
      *
-     * @return SubordinateAddress
+     * @return Address
      */
     public static function fromJson($json)
     {
         $object = json_decode($json);
 
-        $auth = new SubordinateAddress();
+        $auth = new Address();
         $auth->populate($object);
 
         return $auth;
