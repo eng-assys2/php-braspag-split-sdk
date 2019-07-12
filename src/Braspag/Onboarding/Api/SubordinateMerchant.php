@@ -74,7 +74,7 @@ class SubordinateMerchant implements \JsonSerializable
     /** @var SubordinateNotification */
     private $notification;
 
-    /** @var SubordinateAttachment[] */
+    /** @var Attachment[] */
     private $attachments;
 
     /**
@@ -122,7 +122,7 @@ class SubordinateMerchant implements \JsonSerializable
         $this->attachments = [];
         if (isset($data->Attachments)) {
             foreach ($data->Attachments as $attachments) {
-                $attachment = new SubordinateAttachment();
+                $attachment = new Attachment();
                 $attachment->populate($attachments);    
                 $this->attachments[] = $attachment;
             }
@@ -330,11 +330,11 @@ class SubordinateMerchant implements \JsonSerializable
 
     /**
      *
-     * @return SubordinateAttachment
+     * @return Attachment
      */
     public function attachment()
     {
-        $attachment = new SubordinateAttachment();
+        $attachment = new Attachment();
         $this->attachments[] = $attachment;
 
         return $attachment;

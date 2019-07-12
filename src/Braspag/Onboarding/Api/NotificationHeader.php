@@ -7,7 +7,7 @@ namespace Braspag\Onboarding\API;
  *
  * @package Braspag\Onboarding\API
  */
-class SubordinateNotificationHeader implements \JsonSerializable
+class NotificationHeader implements \JsonSerializable
 {
     
     private $key;
@@ -17,13 +17,13 @@ class SubordinateNotificationHeader implements \JsonSerializable
     /**
      * @param $json
      *
-     * @return SubordinateNotificationHeader
+     * @return NotificationHeader
      */
     public static function fromJson($json)
     {
         $object = json_decode($json);
 
-        $auth = new SubordinateNotificationHeader();
+        $auth = new NotificationHeader();
         $auth->populate($object);
 
         return $auth;
