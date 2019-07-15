@@ -374,22 +374,6 @@ class Payment implements \JsonSerializable
      *
      * @return CreditCard
      */
-    public function creditCard($securityCode, $brand)
-    {
-        $card = $this->newCard($securityCode, $brand);
-
-        $this->setType(self::PAYMENTTYPE_CREDITCARD);
-        $this->setCreditCard($card);
-
-        return $card;
-    }
-
-    /**
-     * @param $securityCode
-     * @param $brand
-     *
-     * @return CreditCard
-     */
     public function splittedCreditCard($securityCode, $brand)
     {
         $card = $this->newCard($securityCode, $brand);
@@ -411,22 +395,6 @@ class Payment implements \JsonSerializable
         $card = new CreditCard();
         $card->setSecurityCode($securityCode);
         $card->setBrand($brand);
-
-        return $card;
-    }
-
-    /**
-     * @param $securityCode
-     * @param $brand
-     *
-     * @return CreditCard
-     */
-    public function debitCard($securityCode, $brand)
-    {
-        $card = $this->newCard($securityCode, $brand);
-
-        $this->setType(self::PAYMENTTYPE_DEBITCARD);
-        $this->setDebitCard($card);
 
         return $card;
     }
