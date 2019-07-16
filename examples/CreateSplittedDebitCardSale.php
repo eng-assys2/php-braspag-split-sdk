@@ -1,14 +1,14 @@
 <?php
 require '../vendor/autoload.php';
 
-use Braspag\Merchant;
-use Braspag\Cielo\API30\Ecommerce\Environment;
-use Braspag\Cielo\API30\Ecommerce\Sale;
-use Braspag\Cielo\API30\Ecommerce\CieloEcommerce;
-use Braspag\Cielo\API30\Ecommerce\Payment;
-use Braspag\Cielo\API30\Ecommerce\CreditCard;
+use BraspagSplit\Merchant;
+use BraspagSplit\Cielo\API30\Ecommerce\Environment;
+use BraspagSplit\Cielo\API30\Ecommerce\Sale;
+use BraspagSplit\Cielo\API30\Ecommerce\CieloEcommerce;
+use BraspagSplit\Cielo\API30\Ecommerce\Payment;
+use BraspagSplit\Cielo\API30\Ecommerce\CreditCard;
 
-use Braspag\Request\BraspagRequestException;
+use BraspagSplit\Request\BraspagRequestException;
 // ...
 // Configure o ambiente
 $environment = Environment::sandbox();

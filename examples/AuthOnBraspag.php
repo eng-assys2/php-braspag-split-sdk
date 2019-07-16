@@ -1,9 +1,9 @@
 <?php
 require '../vendor/autoload.php';
 
-use Braspag\Auth\API\Environment;
-use Braspag\Auth\API\BraspagAuth;
-use Braspag\Auth\API\Auth;
+use BraspagSplit\Auth\API\Environment;
+use BraspagSplit\Auth\API\BraspagAuth;
+use BraspagSplit\Auth\API\Auth;
 
 $environment = Environment::sandbox();
 

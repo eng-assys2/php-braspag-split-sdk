@@ -1,14 +1,14 @@
 <?php
 require '../vendor/autoload.php';
 
-use Braspag\Merchant;
+use BraspagSplit\Merchant;
 
-use Braspag\Split\API\Environment;
-use Braspag\Split\API\BraspagSplit;
-use Braspag\Split\API\SchedulerQuery;
-use Braspag\Split\API\SchedulerQueryResponse;
+use BraspagSplit\Split\API\Environment;
+use BraspagSplit\Split\API\BraspagSplit;
+use BraspagSplit\Split\API\SchedulerQuery;
+use BraspagSplit\Split\API\SchedulerQueryResponse;
 
-use Braspag\Request\BraspagRequestException;
+use BraspagSplit\Request\BraspagRequestException;
 
 // Configure o ambiente
 $environment = Environment::sandbox();
