@@ -7,7 +7,7 @@ namespace BraspagSplit\Split\API;
  *
  * @package BraspagSplit\Split\API
  */
-class Chargeback implements \JsonSerializable
+class ChargebackSplit implements \JsonSerializable
 {
     /** @var guid 
      * Identificador do Subordinado.
@@ -27,13 +27,13 @@ class Chargeback implements \JsonSerializable
     /**
      * @param $json
      *
-     * @return Chargeback
+     * @return ChargebackSplit
      */
     public static function fromJson($json)
     {
         $object = json_decode($json);
 
-        $chargeback = new Chargeback();
+        $chargeback = new ChargebackSplit();
         $chargeback->populate($object);
 
         return $chargeback;
