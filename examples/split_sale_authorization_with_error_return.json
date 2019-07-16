@@ -1,0 +1,122 @@
+{
+    "MerchantOrderId": "1234",
+    "Customer": {
+        "Name": "Teste Accept",
+        "Identity": "18160361106",
+        "IdentityType": "CPF",
+        "Email": "teste@teste.com.br",
+        "DeliveryAddress": {
+            "Street": "Alameda Xingu",
+            "Number": "512",
+            "Complement": "27 andar",
+            "ZipCode": "12345987",
+            "City": "São Paulo",
+            "State": "SP",
+            "Country": "BR",
+            "District": "Alphaville"
+        },
+        "Phone": "552125553669",
+        "Mobile": "5521995760078"
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": 0,
+        "Capture": true,
+        "Authenticate": false,
+        "Recurrent": false,
+        "CreditCard": {
+            "CardNumber": "448153******6111",
+            "Holder": "Yamilet Taylor",
+            "ExpirationDate": "12/2019",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "SoftDescriptor": "NomeNaFatura",
+        "Provider": "Simulado",
+        "FraudAnalysis": {
+            "Status": 4,
+            "StatusDescription": "Aborted",
+            "Sequence": "AnalyseFirst",
+            "SequenceCriteria": "OnSuccess",
+            "TotalOrderAmount": 10000,
+            "TransactionAmount": 0,
+            "MerchantDefinedFields": [
+                {
+                    "Id": "1",
+                    "Value": "Guest"
+                },
+                {
+                    "Id": "2",
+                    "Value": "90"
+                },
+                {
+                    "Id": "3",
+                    "Value": "6"
+                },
+                {
+                    "Id": "4",
+                    "Value": "Web"
+                }
+            ],
+            "Cart": {
+                "IsGift": false,
+                "ReturnsAccepted": false,
+                "Items": [
+                    {
+                        "Type": 0,
+                        "Name": "Produto teste",
+                        "Risk": 0,
+                        "Sku": "563",
+                        "OriginalPrice": 0,
+                        "UnitPrice": 10000,
+                        "Quantity": 1,
+                        "HostHedge": 0,
+                        "NonSensicalHedge": 0,
+                        "ObscenitiesHedge": 0,
+                        "PhoneHedge": 0,
+                        "TimeHedge": 0,
+                        "VelocityHedge": 0,
+                        "GiftCategory": 0,
+                        "Weight": 0,
+                        "CartType": 0
+                    }
+                ]
+            },
+            "Browser": {
+                "CookiesAccepted": false,
+                "IpAddress": "179.221.103.151",
+                "BrowserFingerPrint": "123456654322"
+            },
+            "Shipping": {
+                "Addressee": "Teste Accept",
+                "Method": 0
+            },
+            "Provider": "Cybersource",
+            "IsRetryTransaction": false
+        },
+        "SplitErrors": [
+            {
+                "Code": 326,
+                "Message": "The split amount must be equals to transaction amount"
+            }
+        ],
+        "IsQrCode": false,
+        "Amount": 10000,
+        "Status": 13,
+        "IsSplitted": true,
+        "ReturnMessage": "Authorization aborted by Split transactional error",
+        "ReturnCode": "BP333",
+        "PaymentId": "79dfe625-36d8-49a5-9840-2eacbc6be0ed",
+        "Type": "SplittedCreditCard",
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/79dfe625-36d8-49a5-9840-2eacbc6be0ed"
+            }
+        ]
+    }
+}

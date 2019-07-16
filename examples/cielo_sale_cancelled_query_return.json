@@ -1,0 +1,53 @@
+{
+    "MerchantOrderId": "SALESEEDER123456789",
+    "Customer": {
+        "Name": "Caio Juan Melo",
+        "Identity": "56817899001",
+        "Email": "caiojuanmelo-85@charquesorocaba.com.br",
+        "Birthdate": "1997-10-09",
+        "Address": {
+            "Street": "Rua Prefeito Gileno da Silveira Lima",
+            "Number": "662",
+            "ZipCode": "49000-498",
+            "City": "Aracaju",
+            "State": "SE",
+            "Country": "BRASIL",
+            "District": "Zona de Expansão (Aruana)"
+        }
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "CreditCard": {
+            "CardNumber": "000000******0001",
+            "Holder": "CAIO JUAN MELO",
+            "ExpirationDate": "10/2020",
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "147730",
+        "Tid": "0619090144589",
+        "AuthorizationCode": "434752",
+        "PaymentId": "a533f96f-b33a-4741-8757-3ff40c1ac2bb",
+        "Type": "CreditCard",
+        "Amount": 100,
+        "ReceivedDate": "2019-06-19 21:01:31",
+        "CapturedAmount": 100,
+        "CapturedDate": "2019-06-19 21:01:47",
+        "VoidedAmount": 100,
+        "VoidedDate": "2019-06-28 11:24:50",
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Simulado",
+        "Status": 11,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/a533f96f-b33a-4741-8757-3ff40c1ac2bb"
+            }
+        ]
+    }
+}

@@ -1,0 +1,157 @@
+{
+    "MerchantOrderId": "1234",
+    "Customer": {
+        "Name": "Teste Accept",
+        "Identity": "18160361106",
+        "IdentityType": "CPF",
+        "Email": "teste@teste.com.br",
+        "DeliveryAddress": {
+            "Street": "Alameda Xingu",
+            "Number": "512",
+            "Complement": "27 andar",
+            "ZipCode": "12345987",
+            "City": "São Paulo",
+            "State": "SP",
+            "Country": "BR",
+            "District": "Alphaville"
+        },
+        "Phone": "552125553669",
+        "Mobile": "5521995760078"
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": 0,
+        "Capture": false,
+        "Authenticate": false,
+        "Recurrent": false,
+        "CreditCard": {
+            "CardNumber": "448153******6111",
+            "Holder": "Yamilet Taylor",
+            "ExpirationDate": "12/2019",
+            "SaveCard": false,
+            "Brand": "Visa"
+        },
+        "Tid": "0628105725714",
+        "ProofOfSale": "5725714",
+        "AuthorizationCode": "737916",
+        "SoftDescriptor": "NomeNaFatura",
+        "Provider": "Simulado",
+        "FraudAnalysis": {
+            "Id": "dc1977a7-ac99-e911-abc4-0003ffd56142",
+            "Status": 1,
+            "StatusDescription": "Accept",
+            "ReplyData": {
+                "AddressInfoCode": "COR-SA",
+                "FactorCode": "F^H",
+                "Score": 93,
+                "HostSeverity": 1,
+                "HotListInfoCode": "NEG-AFCB^NEG-ASUSP^NEG-CC^NEG-EM^NEG-HIST^NEG-SA",
+                "IpCity": "goiania",
+                "IpCountry": "br",
+                "IpRoutingMethod": "fixed",
+                "IpState": "goias",
+                "ScoreModelUsed": "default_lac",
+                "VelocityInfoCode": "VEL-NAME",
+                "CasePriority": 3,
+                "ProviderTransactionId": "5617302449496359703008"
+            },
+            "Sequence": "AnalyseFirst",
+            "SequenceCriteria": "OnSuccess",
+            "TotalOrderAmount": 10000,
+            "TransactionAmount": 0,
+            "MerchantDefinedFields": [
+                {
+                    "Id": "1",
+                    "Value": "Guest"
+                },
+                {
+                    "Id": "2",
+                    "Value": "90"
+                },
+                {
+                    "Id": "3",
+                    "Value": "6"
+                },
+                {
+                    "Id": "4",
+                    "Value": "Web"
+                }
+            ],
+            "Cart": {
+                "IsGift": false,
+                "ReturnsAccepted": false,
+                "Items": [
+                    {
+                        "Type": 0,
+                        "Name": "Produto teste",
+                        "Risk": 0,
+                        "Sku": "563",
+                        "OriginalPrice": 0,
+                        "UnitPrice": 10000,
+                        "Quantity": 1,
+                        "HostHedge": 0,
+                        "NonSensicalHedge": 0,
+                        "ObscenitiesHedge": 0,
+                        "PhoneHedge": 0,
+                        "TimeHedge": 0,
+                        "VelocityHedge": 0,
+                        "GiftCategory": 0,
+                        "Weight": 0,
+                        "CartType": 0
+                    }
+                ]
+            },
+            "Browser": {
+                "CookiesAccepted": false,
+                "IpAddress": "179.221.103.151",
+                "BrowserFingerPrint": "123456654322"
+            },
+            "Shipping": {
+                "Addressee": "Teste Accept",
+                "Method": 0
+            },
+            "FraudAnalysisReasonCode": 100,
+            "Provider": "Cybersource",
+            "IsRetryTransaction": false
+        },
+        "SplitPayments": [
+            {
+                "SubordinateMerchantId": "e5861a00-5ed2-4928-b73b-a37c89aa9370",
+                "Amount": 10000,
+                "Fares": {
+                    "Mdr": 0,
+                    "Fee": 0
+                }
+            }
+        ],
+        "IsQrCode": false,
+        "Amount": 10000,
+        "ReceivedDate": "2019-06-28 10:57:23",
+        "Status": 1,
+        "IsSplitted": true,
+        "ReturnMessage": "Operation Successful",
+        "ReturnCode": "4",
+        "PaymentId": "53ad3a84-8c59-49dc-9e90-85ea032fd797",
+        "Type": "SplittedCreditCard",
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/53ad3a84-8c59-49dc-9e90-85ea032fd797"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "capture",
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/53ad3a84-8c59-49dc-9e90-85ea032fd797/capture"
+            },
+            {
+                "Method": "PUT",
+                "Rel": "void",
+                "Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/53ad3a84-8c59-49dc-9e90-85ea032fd797/void"
+            }
+        ]
+    }
+}

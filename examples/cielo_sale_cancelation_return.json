@@ -1,0 +1,19 @@
+{
+    "Status": 11,
+    "ReasonCode": 0,
+    "ReasonMessage": "Successful",
+    "ProviderReturnCode": "0",
+    "ProviderReturnMessage": "Operation Successful",
+    "ReturnCode": "0",
+    "ReturnMessage": "Operation Successful",
+    "Tid": "0619090144589",
+    "ProofOfSale": "147730",
+    "AuthorizationCode": "434752",
+    "Links": [
+        {
+            "Method": "GET",
+            "Rel": "self",
+            "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/a533f96f-b33a-4741-8757-3ff40c1ac2bb"
+        }
+    ]
+}

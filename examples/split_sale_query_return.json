@@ -1,0 +1,72 @@
+{
+    "MerchantId": "e5861a00-5ed2-4928-b73b-a37c89aa9370",
+    "MerchantOrderId": "1234",
+    "IsSplitted": true,
+    "Customer": {
+        "Name": "Teste Accept",
+        "Identity": "18160361106",
+        "Email": "teste@teste.com.br",
+        "Address": {}
+    },
+    "Payment": {
+        "ServiceTaxAmount": 0,
+        "Installments": 1,
+        "Interest": "ByMerchant",
+        "Capture": false,
+        "Authenticate": false,
+        "CreditCard": {
+            "CardNumber": "448153******6111",
+            "Holder": "Yamilet Taylor",
+            "ExpirationDate": "12/2019",
+            "Brand": "Visa"
+        },
+        "ProofOfSale": "001610",
+        "Tid": "0628105725714",
+        "AuthorizationCode": "737916",
+        "FraudAnalysis": {
+            "FraudAnalysisReasonCode": 100,
+            "Score": 93,
+            "Status": "Accept",
+            "FactorCode": "F^H",
+            "Id": "dc1977a7-ac99-e911-abc4-0003ffd56142",
+            "PreviousStatus": "Unknown",
+            "ProviderTransactionId": "5617302449496359703008",
+            "Provider": "Cybersource"
+        },
+        "SplitPayments": [
+            {
+                "SubordinateMerchantId": "e5861a00-5ed2-4928-b73b-a37c89aa9370",
+                "Amount": 10000,
+                "Fares": {
+                    "Mdr": 2.23,
+                    "Fee": 0
+                },
+                "Splits": [
+                    {
+                        "MerchantId": "e5861a00-5ed2-4928-b73b-a37c89aa9370",
+                        "Amount": 10000
+                    }
+                ]
+            }
+        ],
+        "Voids": [],
+        "Chargebacks": [],
+        "PaymentId": "53ad3a84-8c59-49dc-9e90-85ea032fd797",
+        "Type": "SplittedCreditCard",
+        "Amount": 10000,
+        "ReceivedDate": "2019-06-28 10:57:23",
+        "CapturedAmount": 10000,
+        "CapturedDate": "2019-06-28 11:00:01",
+        "Currency": "BRL",
+        "Country": "BRA",
+        "Provider": "Simulado",
+        "Status": 2,
+        "Links": [
+            {
+                "Method": "GET",
+                "Rel": "self",
+                "Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/53ad3a84-8c59-49dc-9e90-85ea032fd797"
+            }
+        ]
+    }
+}

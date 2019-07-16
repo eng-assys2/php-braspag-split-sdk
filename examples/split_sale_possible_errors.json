@@ -1,0 +1,18 @@
+{
+    "SplitErrors": [
+        {
+            "Code": 326,
+            "Message": "The split amount must be equals to transaction amount"
+        },
+        {
+            "Code": 326,
+            "Message": "Subordinate merchants cannot be duplicated"
+        }
+    ],
+    "Cielo Return - Always the same": {
+        "Status": 13,
+        "IsSplitted": true,
+        "ReturnMessage": "Authorization aborted by Split transactional error",
+        "ReturnCode": "BP333"
+    }
+}
