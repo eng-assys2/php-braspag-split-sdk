@@ -1,7 +1,7 @@
 {
   "autoload": {
     "psr-0": {
-      "Braspag": "src"
+      "BraspagSplit": "src"
     }
   },
   "name": "gerenciagram/braspag-split-api-php",
