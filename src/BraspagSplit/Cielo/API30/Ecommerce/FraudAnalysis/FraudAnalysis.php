@@ -61,6 +61,32 @@ class FraudAnalysis implements CieloSerializable
 
     /** @var FraudAnalysisTravel */
     private $travel;
+
+    // Reply Data
+
+    private $fraudAnalysisReasonCode;
+
+    private $isRetryTransaction;
+
+    private $score;
+
+    private $status;
+
+    private $statusDescription;
+
+    private $factorCode;
+
+    private $id;
+
+    private $previousStatus;
+
+    private $providerTransactionId;
+
+    private $transactionAmount;
+
+    /** @var FraudAnalysisReplyData */
+    private $replyData;
+
     
     /**
      * FraudAnalysis constructor.
@@ -141,6 +167,23 @@ class FraudAnalysis implements CieloSerializable
             $this->travel = new FraudAnalysisTravel();
             $this->travel->populate($data->Travel);
         }
+
+        if (isset($data->ReplyData)) {
+            $this->replyData = new FraudAnalysisReplyData();
+            $this->replyData->populate($data->ReplyData);
+        }
+
+        $this->fraudAnalysisReasonCode = isset($data->FraudAnalysisReasonCode) ? $data->FraudAnalysisReasonCode : null;
+        $this->isRetryTransaction = isset($data->IsRetryTransaction) ? $data->IsRetryTransaction : null;
+        $this->score = isset($data->Score) ? $data->Score : null;
+        $this->status = isset($data->Status) ? $data->Status : null;
+        $this->statusDescription = isset($data->StatusDescription) ? $data->StatusDescription : null;
+        $this->factorCode = isset($data->FactorCode) ? $data->FactorCode : null;
+        $this->id = isset($data->Id) ? $data->Id : null;
+        $this->previousStatus = isset($data->PreviousStatus) ? $data->PreviousStatus : null;
+        $this->providerTransactionId = isset($data->ProviderTransactionId) ? $data->ProviderTransactionId : null;
+        $this->transactionAmount = isset($data->TransactionAmount) ? $data->TransactionAmount : null;
+
     }
     
     /**
@@ -384,7 +427,7 @@ class FraudAnalysis implements CieloSerializable
      * @return mixed
      */
     public function getTravel(){
-
+        return $this->travel;
     }
 
     /**
@@ -396,4 +439,192 @@ class FraudAnalysis implements CieloSerializable
         $this->travel = $travel;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getReplyData(){
+        return $this->replyData;
+    }
+
+    /**
+     * @param $replyData
+     * 
+     * @return $this
+     */    
+    public function setReplyData($replyData){
+        $this->replyData = $replyData;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFraudAnalysisReasonCode(){
+        return $this->fraudAnalysisReasonCode;
+    }
+
+    /**
+     * @param $fraudAnalysisReasonCode
+     * 
+     * @return $this
+     */    
+    public function setFraudAnalysisReasonCode($fraudAnalysisReasonCode){
+        $this->fraudAnalysisReasonCode = $fraudAnalysisReasonCode;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsRetryTransaction(){
+        return $this->isRetryTransaction;
+    }
+
+    /**
+     * @param $isRetryTransaction
+     * 
+     * @return $this
+     */    
+    public function setIsRetryTransaction($isRetryTransaction){
+        $this->isRetryTransaction = $isRetryTransaction;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getScore(){
+        return $this->score;
+    }
+
+    /**
+     * @param $score
+     * 
+     * @return $this
+     */    
+    public function setScore($score){
+        $this->score = $score;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus(){
+        return $this->status;
+    }
+
+    /**
+     * @param $status
+     * 
+     * @return $this
+     */    
+    public function setStatus($status){
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatusDescription(){
+        return $this->statusDescription;
+    }
+
+    /**
+     * @param $statusDescription
+     * 
+     * @return $this
+     */    
+    public function setStatusDescription($statusDescription){
+        $this->statusDescription = $statusDescription;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFactorCode(){
+        return $this->factorCode;
+    }
+
+    /**
+     * @param $factorCode
+     * 
+     * @return $this
+     */    
+    public function setFactorCode($factorCode){
+        $this->factorCode = $factorCode;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId(){
+        return $this->id;
+    }
+
+    /**
+     * @param $id
+     * 
+     * @return $this
+     */    
+    public function setId($id){
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreviousStatus(){
+        return $this->previousStatus;
+    }
+
+    /**
+     * @param $previousStatus
+     * 
+     * @return $this
+     */    
+    public function setPreviousStatus($previousStatus){
+        $this->previousStatus = $previousStatus;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProviderTransactionId(){
+        return $this->providerTransactionId;
+    }
+
+    /**
+     * @param $providerTransactionId
+     * 
+     * @return $this
+     */    
+    public function setProviderTransactionId($providerTransactionId){
+        $this->providerTransactionId = $providerTransactionId;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTransactionAmount(){
+        return $this->transactionAmount;
+    }
+
+    /**
+     * @param $transactionAmount
+     * 
+     * @return $this
+     */    
+    public function setTransactionAmount($transactionAmount){
+        $this->transactionAmount = $transactionAmount;
+        return $this;
+    }
+
 }
