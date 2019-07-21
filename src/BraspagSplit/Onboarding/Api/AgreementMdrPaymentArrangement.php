@@ -33,7 +33,7 @@ class AgreementMdrPaymentArrangement implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        return get_object_vars($this);
+        return array_filter(get_object_vars($this));
     }
 
     /**
